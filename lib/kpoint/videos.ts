@@ -62,6 +62,7 @@ function convertMockToKPointVideo(mockVideo: MockVideo): KPointVideo {
   }
 
   return {
+    ...mockVideo,
     id: mockVideo.id,
     title: mockVideo.displayname,
     description: mockVideo.description,
@@ -71,7 +72,6 @@ function convertMockToKPointVideo(mockVideo: MockVideo): KPointVideo {
     duration: mockVideo.published_duration,
     status: mockVideo.status,
     interactivity_packages: interactivityPackages,
-    ...mockVideo,
   };
 }
 
