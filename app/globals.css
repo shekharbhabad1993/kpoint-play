@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 antialiased;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 p-4 sm:p-6;
+  }
+  .btn-primary {
+    @apply bg-kpoint-600 hover:bg-kpoint-700 active:bg-kpoint-800 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation;
+  }
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 active:bg-gray-100 text-gray-700 font-medium py-2 px-4 rounded-lg border border-gray-200 transition-colors duration-150 touch-manipulation;
+  }
+  .btn-ghost {
+    @apply hover:bg-gray-100 active:bg-gray-200 text-gray-600 font-medium py-2 px-4 rounded-lg transition-colors duration-150 touch-manipulation;
+  }
+  .input-field {
+    @apply w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-kpoint-500 focus:border-transparent transition-all duration-150;
+  }
+}
+
+/* Mobile-specific improvements */
+@layer utilities {
+  /* Prevent zoom on input focus for iOS */
+  @media screen and (max-width: 640px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="date"],
+    textarea,
+    select {
+      font-size: 16px;
+    }
+  }
+
+  /* Safe area insets for mobile devices */
+  .safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Touch-friendly spacing */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
