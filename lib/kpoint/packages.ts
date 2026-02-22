@@ -32,14 +32,8 @@ export interface PersonalizationField {
  */
 function convertMockToPackageDetail(mockPackage: MockPackage): PackageDetail {
   return {
-    id: mockPackage.id,
-    name: mockPackage.name,
-    description: mockPackage.description,
-    video_id: mockPackage.video_id,
-    fields: mockPackage.fields,
-    configuration: mockPackage.configuration,
     ...mockPackage,
-  };
+  } as PackageDetail;
 }
 
 export async function getPackage(packageId: string): Promise<PackageDetail> {
