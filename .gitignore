@@ -44,3 +44,5 @@ decode-play-link.js
 # Environment files
 .env
 nul
+
+.vercel

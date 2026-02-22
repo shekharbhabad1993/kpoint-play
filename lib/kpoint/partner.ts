@@ -42,14 +42,8 @@ function convertMockToPartnerTemplate(
   mockTemplate: MockPartnerTemplate
 ): PartnerTemplate {
   return {
-    id: mockTemplate.id,
-    package_id: mockTemplate.package_id,
-    package_name: mockTemplate.package_name,
-    video_id: mockTemplate.video_id,
-    video_title: mockTemplate.video_title,
-    fields: mockTemplate.fields,
     ...mockTemplate,
-  };
+  } as PartnerTemplate;
 }
 
 export async function getPartnerTemplates(
