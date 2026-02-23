@@ -9,6 +9,22 @@ import { TemplateCard } from "@/components/partner/template-card";
 import { PersonalizationModal } from "@/components/partner/personalization-modal";
 import { UserSwitcher } from "@/components/partner/user-switcher";
 
+interface InteractivityPackage {
+  id: string;
+  name?: string;
+  description?: string;
+  [key: string]: unknown;
+}
+
+interface Video {
+  id: string;
+  title: string;
+  description?: string;
+  thumbnail_url?: string;
+  interactivity_packages?: InteractivityPackage[];
+  [key: string]: unknown;
+}
+
 interface Template {
   id: string;
   package_id: string;
@@ -29,11 +45,35 @@ export default function PartnerTemplatesPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/kpoint/partner");
-      if (!res.ok) throw new Error("Failed to fetch templates");
+      // Fetch videos with interactive packages (same as admin interface)
+      const res = await fetch("/api/kpoint/videos?scope=trending");
+      if (!res.ok) throw new Error("Failed to fetch videos");
       const data = await res.json();
-      const list = data.templates || data.results || data.data || [];
-      setTemplates(Array.isArray(list) ? list : []);
+      const videoList = data.videos || data.list || data.results || data.data || [];
+
+      // Filter to only show videos with interactive packages
+      const videosWithPackages = Array.isArray(videoList)
+        ? videoList.filter((video: Video) =>
+            video.interactivity_packages &&
+            video.interactivity_packages.length > 0
+          )
+        : [];
+
+      // Convert videos to template format for the UI
+      const templateList = videosWithPackages.flatMap((video: Video) =>
+        (video.interactivity_packages || []).map((pkg: InteractivityPackage) => ({
+          id: `${video.id}-${pkg.id}`,
+          package_id: pkg.id,
+          package_name: pkg.name || "Interactive Package",
+          video_id: video.id,
+          video_title: video.title,
+          thumbnail_url: video.thumbnail_url,
+          description: pkg.description || video.description,
+          fields: [], // TODO: Extract personalization fields from package
+        }))
+      );
+
+      setTemplates(templateList);
     } catch (err) {
       setError(
         err instanceof Error ? err.message : "Failed to load templates"
