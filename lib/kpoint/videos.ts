@@ -99,7 +99,19 @@ export async function listVideos(
   if (scope) params.scope = scope;
 
   const data = await kpointClient.get("/videos", params);
-  return data as VideoListResponse;
+
+  // KPOINT API returns data in this format:
+  // { list: [...], totalcount: ..., last_index: ... }
+  // We need to transform it to our VideoListResponse format
+  const response = data as any;
+  const videos = response.list || response.videos || response.results || response.data || [];
+
+  return {
+    videos: Array.isArray(videos) ? videos : [],
+    total: response.totalcount || response.total || videos.length,
+    page: 1,
+    per_page: videos.length,
+  };
 }
 
 export async function getVideo(videoId: string): Promise<KPointVideo> {
