@@ -39,7 +39,7 @@ export default function VideosPage() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/kpoint/videos");
+      const res = await fetch("/api/kpoint/videos?scope=trending");
       if (!res.ok) throw new Error("Failed to fetch videos");
       const data = await res.json();
       // Handle various response shapes from KPOINT

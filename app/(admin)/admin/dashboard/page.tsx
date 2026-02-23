@@ -21,7 +21,7 @@ export default function AdminDashboard() {
   async function fetchStats() {
     setStats((s) => ({ ...s, loading: true, error: null }));
     try {
-      const res = await fetch("/api/kpoint/videos");
+      const res = await fetch("/api/kpoint/videos?scope=trending");
       if (!res.ok) throw new Error("Failed to fetch videos");
       const data = await res.json();
       const videos = data.videos || data.results || [];
