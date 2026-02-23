@@ -104,13 +104,25 @@ export async function listVideos(
   // { list: [...], totalcount: ..., last_index: ... }
   // We need to transform it to our VideoListResponse format
   const response = data as any;
-  const videos = response.list || response.videos || response.results || response.data || [];
+  const videoList = response.list || response.videos || response.results || response.data || [];
+
+  // Transform each video to our expected format
+  const transformedVideos = Array.isArray(videoList)
+    ? videoList.map((video: any) => ({
+        ...video,
+        title: video.title || video.displayname || video.name,
+        thumbnail_url: video.thumbnail_url || video.images?.thumb,
+        created_at: video.created_at || video.time_created,
+        updated_at: video.updated_at || video.time_last_update,
+        duration: video.duration || video.published_duration,
+      }))
+    : [];
 
   return {
-    videos: Array.isArray(videos) ? videos : [],
-    total: response.totalcount || response.total || videos.length,
+    videos: transformedVideos,
+    total: response.totalcount || response.total || transformedVideos.length,
     page: 1,
-    per_page: videos.length,
+    per_page: transformedVideos.length,
   };
 }
 
