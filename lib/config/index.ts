@@ -3,6 +3,7 @@ export const config = {
     baseUrl: process.env.KPOINT_BASE_URL || "https://ktpl.kpoint.com",
     clientId: process.env.KPOINT_CLIENT_ID || "",
     clientSecret: process.env.KPOINT_CLIENT_SECRET || "",
+    userEmail: process.env.KPOINT_USER_EMAIL || "",
     playerBaseUrl:
       process.env.KPOINT_PLAYER_BASE_URL ||
       "https://ktpl.kpoint.com/web/videos",

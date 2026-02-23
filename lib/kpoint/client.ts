@@ -1,5 +1,5 @@
-import { getAccessToken, refreshToken } from "./auth";
-import { getApiUrl } from "@/lib/config";
+import { getApiUrl, config } from "@/lib/config";
+import { getKPointAuthParams } from "./jwt";
 
 export class KPointApiError extends Error {
   status: number;
@@ -22,21 +22,30 @@ interface RequestOptions {
 
 async function makeRequest(
   path: string,
-  options: RequestOptions = {},
-  isRetry = false
+  options: RequestOptions = {}
 ): Promise<unknown> {
   const { method = "GET", body, params, headers: extraHeaders } = options;
 
-  const token = await getAccessToken();
-
-  let url = getApiUrl(path);
-  if (params) {
-    const searchParams = new URLSearchParams(params);
-    url += `?${searchParams.toString()}`;
+  // Check if mock mode is enabled
+  if (config.kpoint.mockMode) {
+    throw new Error(
+      "Mock mode is enabled. Real API calls are disabled. Set KPOINT_MOCK_MODE=false to use real API."
+    );
   }
 
+  // Generate JWT auth parameters
+  const authParams = getKPointAuthParams();
+
+  // Build URL with auth parameters
+  let url = getApiUrl(path);
+  const urlParams = new URLSearchParams({
+    token: authParams.token,
+    kcid: authParams.kcid,
+    ...params,
+  });
+  url += `?${urlParams.toString()}`;
+
   const headers: Record<string, string> = {
-    Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
     ...extraHeaders,
   };
@@ -51,12 +60,6 @@ async function makeRequest(
   }
 
   const response = await fetch(url, fetchOptions);
-
-  // Retry once on 401 (token expired)
-  if (response.status === 401 && !isRetry) {
-    await refreshToken();
-    return makeRequest(path, options, true);
-  }
 
   if (!response.ok) {
     const errorBody = await response.json().catch(() => null);
