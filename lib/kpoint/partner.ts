@@ -88,7 +88,16 @@ export async function getPartnerTemplates(
   if (partnerId) params.partner_id = partnerId;
 
   const data = await kpointClient.get("/partner/templates", params);
-  return data as PartnerTemplateListResponse;
+
+  // KPOINT API may return data in different formats
+  // Transform to our PartnerTemplateListResponse format
+  const response = data as any;
+  const templates = response.templates || response.list || response.results || response.data || [];
+
+  return {
+    templates: Array.isArray(templates) ? templates : [],
+    total: response.total || response.totalcount || templates.length,
+  };
 }
 
 export async function getPartnerTemplate(
