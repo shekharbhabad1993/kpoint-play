@@ -43,7 +43,7 @@ export default function LoginPage() {
       }
 
       router.push(
-        selectedRole === "admin" ? "/admin/dashboard" : "/partner/dashboard"
+        selectedRole === "admin" ? "/admin/videos" : "/partner/templates"
       );
     } catch {
       setError("Something went wrong. Please try again.");
