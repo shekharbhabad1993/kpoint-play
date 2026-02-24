@@ -113,147 +113,1132 @@ export interface MockVideo {
 
 export const mockVideos: MockVideo[] = [
   {
-    comment_count: 0,
-    non_interactive_flag: false,
-    _score: 1,
-    live_event: null,
-    time_created: "2026-01-12T12:23:33+05:30",
-    review_request_state: "NA",
-    teleport_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/teleport",
-    id: "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
-    suggested_tags: [
-      "available",
-      "bilingual_communication",
-      "bottom_right_corner",
-      "connect",
-      "customer_service",
-      "English",
-      "help",
-      "Hindi",
-      "ICICI_Lombard",
-      "IL_elevate",
-      "insurance",
-      "online_assistance",
-      "policy",
-      "query",
-      "support",
-    ],
-    images: {
-      thumb:
-        "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
-      fallback: {
-        thumb:
-          "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
-        full: "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-full.jpg",
-        vthumb:
-          "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/vthumb.jpg",
+      "kapsule_id": "gcc-6560f726-4c24-4e17-8300-35a499b2f732",
+      "id": "gcc-6560f726-4c24-4e17-8300-35a499b2f732",
+      "story": null,
+      "displayname": "Ipru Drona diya AI use cases",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 0,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-full.jpg"
       },
-      full: "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-full.jpg",
-      vthumb:
-        "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/vthumb.jpg",
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-6560f726-4c24-4e17-8300-35a499b2f732/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-6560f726-4c24-4e17-8300-35a499b2f732' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-6560f726-4c24-4e17-8300-35a499b2f732",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-6560f726-4c24-4e17-8300-35a499b2f732/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-thumb.jpg",
+      "title": "Ipru Drona diya AI use cases",
+      "tags": [],
+      "suggestedTags": [],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20260213T16:46:16",
+      "timeLastUpdated": "20260213T17:07:37",
+      "timeLastGenerate": "20260213T16:59:32",
+      "duration": 2159,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-6560f726-4c24-4e17-8300-35a499b2f732?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "video.res.720": "done",
+        "quickshoot.video": "true",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "upload_chunk_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/record/up2801027/e397cffe-a352-4131-8b7d-792271f12d6a/screen/data-",
+        "high_precision": "0",
+        "stt.state": "processing",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1770982199408",
+        "scene.artifact.count": "143"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
     },
-    bookmarks_suffix:
-      "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/bookmarks",
-    v4_embed_url:
-      "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/nv4/embedded",
-    offline_hls_url: "",
-    has_transcript: true,
-    tags: [],
-    status: "ready",
-    aspect_ratio: "9:16",
-    gif_path: null,
-    transcript_name: "auto",
-    quiz_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/quiz",
-    comments_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/comments",
-    deleted_flag: false,
-    can_access_kapsule: true,
-    categories: {},
-    time_metadata_update: "20260222T15:53:34",
-    expiry_date: null,
-    standard_embed_code:
-      "<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-cdn.js'></script>",
-    polls_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/polls",
-    show_transcript_flag: false,
-    scorm_created_flag: false,
-    api_prefix: "https://ktpl.kpoint.com/api/v3",
-    featured_flag: false,
-    displayname: "IL Hindi",
-    api_suffix: "/video/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
-    owner_displayname: "shekhar.bhabad",
-    view_count: 129,
-    time_publish: "2026-01-12T12:23:33+05:30",
-    delete_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/delete",
-    time_last_update: "2026-02-22T15:53:34+05:30",
-    questions_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/questions",
-    comment_enabled_flag: true,
-    artifacts: ["TRANSCRIPT", "SCENE"],
-    like_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/like",
-    owner_name: "shekharb11534180",
-    like_count: 0,
-    live_event_flag: false,
-    visibility: "PUBLIC",
-    can_manage: true,
-    author: null,
-    review_update_date: null,
-    time_last_featured: null,
-    review_comments: null,
-    time_last_generate: "2026-01-12T12:25:26+05:30",
-    reviewer_displayname: null,
-    scorm_enabled_flag: false,
-    revision: 5,
-    rating_count: 0,
-    published_duration: 13,
-    cdn_url:
-      "ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/view/html5",
-    share_url:
-      "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7?vsrc=shm",
-    name: "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
-    notify_flag: true,
-    published_flag: true,
-    description: "",
-    embed_markup: {
-      standard:
-        "<iframe src='https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'></iframe>",
-      advanced:
-        "<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'></script>",
+    {
+      "kapsule_id": "gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d",
+      "id": "gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d",
+      "story": null,
+      "displayname": "Health Claim Process_v03 (1)",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 17,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/v5/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/v5/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/v5/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/v5/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d/v5/i/16x9-thumb.jpg",
+      "title": "Health Claim Process_v03 (1)",
+      "tags": [],
+      "suggestedTags": [
+        "cashless_everywhere",
+        "cashless_treatment",
+        "claim_form",
+        "claim_status",
+        "delisted_hospitals",
+        "emergency_notification",
+        "health_card",
+        "health_insurance",
+        "hospitalisation_documents",
+        "ICICI_Lombard",
+        "IL_Tacare_app",
+        "medical_care",
+        "network_hospital",
+        "reimbursement_claims",
+        "third_party_administrator"
+      ],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20260112T14:06:09",
+      "timeLastUpdated": "20260209T13:55:07",
+      "timeLastGenerate": "20260112T14:09:17",
+      "duration": 277,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-e84f5774-f9d1-445f-a2ed-db7ba282c77d?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PUBLIC",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "upload_video_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up840276/o_1jeolhlch1vr917sn4gpjge1h2bd/o_1jeolhlch1vr917sn4gpjge1h2bd.mp4",
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "video.res.720": "done",
+        "video_download_flag": "false",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1768207179611",
+        "scene.artifact.count": "11"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
     },
-    transcript_suffix:
-      "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/transcripts/default",
-    thumbnail_path: "thumb.jpg",
-    reviewer_username: null,
-    owner_email: "shekhar.bhabad@kpoint.com",
-    app_url:
-      "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
-    play_url:
-      "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/play",
-    src: "VIDEO",
-    scenes_suffix: "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/scenes",
-    annotations_suffix:
-      "/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/annotations",
-    properties: {
-      interactivity_packages:
-        '[{"time_last_published":"2026-02-22 15:53:34","displayname":"Untitled","time_last_update":"2026-02-22 15:53:34","time_created":"2026-02-22 13:57:59","id":"52eutbewxdcu","state":"PUBLISHED"}]',
-      upload_video_path:
-        "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up840253/o_1jeofm9o91mha1bbnmg31ftueied/o_1jeofm9o91mha1bbnmg31ftueied.mp4",
-      "stt.confidence": "1.0",
-      "smart.scene.artifact.count": "3",
-      hlsonly: "true",
-      "stt.language": "en-IN",
-      "video.res.720": "done",
-      video_download_flag: "false",
-      "video.res.240": "done",
-      "video.res.360": "done",
-      "stt.state": "done",
-      comment_type: "ALL",
-      "video.res.480": "done",
-      "stt.start_time": "1768200948403",
-      "scene.artifact.count": "1",
+    {
+      "kapsule_id": "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
+      "id": "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
+      "story": null,
+      "displayname": "IL Hindi",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 146,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-full.jpg",
+          "vthumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/vthumb.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-full.jpg",
+        "vthumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/vthumb.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
+      "title": "IL Hindi",
+      "tags": [],
+      "suggestedTags": [
+        "available",
+        "bilingual_communication",
+        "bottom_right_corner",
+        "connect",
+        "customer_service",
+        "English",
+        "help",
+        "Hindi",
+        "ICICI_Lombard",
+        "IL_elevate",
+        "insurance",
+        "online_assistance",
+        "policy",
+        "query",
+        "support"
+      ],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "SCENE"
+      ],
+      "timeCreated": "20260112T12:23:33",
+      "timeLastUpdated": "20260224T13:05:06",
+      "timeLastGenerate": "20260112T12:25:26",
+      "duration": 13,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PUBLIC",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "interactivity_packages": "[{\"time_last_published\":\"2026-02-22 15:53:34\",\"displayname\":\"Untitled\",\"time_last_update\":\"2026-02-22 15:53:34\",\"time_created\":\"2026-02-22 13:57:59\",\"id\":\"52eutbewxdcu\",\"state\":\"PUBLISHED\"}]",
+        "upload_video_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up840253/o_1jeofm9o91mha1bbnmg31ftueied/o_1jeofm9o91mha1bbnmg31ftueied.mp4",
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "video.res.720": "done",
+        "video_download_flag": "false",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1768200948403",
+        "scene.artifact.count": "1"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "9:16",
+      "isShortVideo": "false",
+      "strictAccess": "false"
     },
-    time_sort: null,
-  },
-  {"comment_count":0,"non_interactive_flag":false,"_score":1,"live_event":null,"time_created":"2026-02-10T14:26:35+05:30","review_request_state":"NA","teleport_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/teleport","id":"gcc-d941d952-1097-4588-832d-c3585963d33e","suggested_tags":[],"images":{"thumb":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/i/16x9-thumb.jpg","fallback":{"thumb":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/i/16x9-thumb.jpg","full":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/i/16x9-full.jpg","vthumb":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/i/vthumb.jpg"},"full":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/i/16x9-full.jpg","vthumb":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/i/vthumb.jpg"},"bookmarks_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/bookmarks","v4_embed_url":"https://ktpl.kpoint.com/web/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/nv4/embedded","offline_hls_url":"","has_transcript":true,"tags":[],"status":"ready","aspect_ratio":"9:16","gif_path":null,"transcript_name":"auto","quiz_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/quiz","comments_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/comments","deleted_flag":false,"can_access_kapsule":true,"categories":{},"time_metadata_update":"20260210T14:35:42","expiry_date":null,"standard_embed_code":"<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-d941d952-1097-4588-832d-c3585963d33e' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-cdn.js'></script>","polls_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/polls","show_transcript_flag":false,"scorm_created_flag":false,"api_prefix":"https://ktpl.kpoint.com/api/v3","featured_flag":false,"displayname":"KLI Dinesh Pillai","api_suffix":"/video/gcc-d941d952-1097-4588-832d-c3585963d33e","owner_displayname":"Anisha Vijayan","view_count":73,"time_publish":"2026-02-10T14:26:35+05:30","delete_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/delete","time_last_update":"2026-02-22T12:15:07+05:30","questions_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/questions","comment_enabled_flag":true,"artifacts":["TRANSCRIPT","TAG_INDEXER"],"like_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/like","owner_name":"anis.vijxe29a56fb7863644","like_count":0,"live_event_flag":false,"visibility":"PUBLIC","can_manage":false,"author":"","review_update_date":null,"time_last_featured":null,"review_comments":null,"time_last_generate":"2026-02-10T14:29:27+05:30","reviewer_displayname":null,"scorm_enabled_flag":false,"revision":6,"rating_count":0,"published_duration":49,"cdn_url":"ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d941d952-1097-4588-832d-c3585963d33e/v6/view/html5","share_url":"https://ktpl.kpoint.com/web/videos/gcc-d941d952-1097-4588-832d-c3585963d33e?vsrc=shm","name":"gcc-d941d952-1097-4588-832d-c3585963d33e","notify_flag":true,"published_flag":true,"description":"","embed_markup":{"standard":"<iframe src='https://ktpl.kpoint.com/web/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'></iframe>","advanced":"<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-d941d952-1097-4588-832d-c3585963d33e' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'></script>"},"transcript_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/transcripts/default","thumbnail_path":"thumb.jpg","reviewer_username":null,"owner_email":"anisha.vijayan@kpoint.com","app_url":"https://ktpl.kpoint.com/web/videos/gcc-d941d952-1097-4588-832d-c3585963d33e","play_url":"https://ktpl.kpoint.com/web/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/play","src":"VIDEO","scenes_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/scenes","annotations_suffix":"/videos/gcc-d941d952-1097-4588-832d-c3585963d33e/annotations","properties":{"upload_video_path":"upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up280429/o_1jh3c8bnmc671vrh1d1askm1rm6d/o_1jh3c8bnmc671vrh1d1askm1rm6d.mp4","stt.confidence":"1.0","smart.scene.artifact.count":"3","hlsonly":"true","stt.language":"en-IN","video_download_flag":"false","video.res.720":"done","video.res.240":"done","video.res.360":"done","stt.state":"done","comment_type":"ALL","video.res.480":"done","stt.start_time":"1770713990027","short_video":"true","scene.artifact.count":"2","restricted_video":"false"},"time_sort":null},
-  {"comment_count":0,"non_interactive_flag":false,"_score":1,"live_event":null,"time_created":"2025-09-30T09:27:53+05:30","review_request_state":"NA","teleport_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/teleport","id":"gcc-a0935947-c987-4ef4-b171-10392afef509","suggested_tags":["AB_Road","Bajaj_Finserv","Blockbuster_EMI_Days","EMI","festival_shopping","festive_discounts","finance_options","Indore","Indore_location","offers","Parima_Tyres","promotional_period","Rajendra_Nagar","tire_store","tyohar"],"images":{"thumb":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/i/16x9-thumb.jpg","fallback":{"thumb":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/i/16x9-thumb.jpg","full":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/i/16x9-full.jpg","vthumb":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/i/vthumb.jpg"},"full":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/i/16x9-full.jpg","vthumb":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/i/vthumb.jpg"},"bookmarks_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/bookmarks","v4_embed_url":"https://ktpl.kpoint.com/web/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/nv4/embedded","offline_hls_url":"","has_transcript":true,"tags":[],"status":"ready","aspect_ratio":"9:16","gif_path":null,"transcript_name":"auto","quiz_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/quiz","comments_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/comments","deleted_flag":false,"can_access_kapsule":true,"categories":{},"time_metadata_update":"20250930T09:36:24","expiry_date":null,"standard_embed_code":"<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-a0935947-c987-4ef4-b171-10392afef509' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-cdn.js'></script>","polls_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/polls","show_transcript_flag":false,"scorm_created_flag":false,"api_prefix":"https://ktpl.kpoint.com/api/v3","featured_flag":false,"displayname":"RR","api_suffix":"/video/gcc-a0935947-c987-4ef4-b171-10392afef509","owner_displayname":"Swanand Pawar","view_count":62,"time_publish":"2025-09-30T09:27:53+05:30","delete_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/delete","time_last_update":"2026-02-06T18:31:19+05:30","questions_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/questions","comment_enabled_flag":true,"artifacts":["TRANSCRIPT","TAG_INDEXER","SCENE"],"like_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/like","owner_name":"swan.pawxaf9552808657712","like_count":0,"live_event_flag":false,"visibility":"USERS","can_manage":false,"author":null,"review_update_date":null,"time_last_featured":null,"review_comments":null,"time_last_generate":"2025-09-30T09:29:59+05:30","reviewer_displayname":null,"scorm_enabled_flag":false,"revision":4,"rating_count":0,"published_duration":43,"cdn_url":"ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-a0935947-c987-4ef4-b171-10392afef509/v4/view/html5","share_url":"https://ktpl.kpoint.com/web/videos/gcc-a0935947-c987-4ef4-b171-10392afef509?vsrc=shm","name":"gcc-a0935947-c987-4ef4-b171-10392afef509","notify_flag":true,"published_flag":true,"description":"","embed_markup":{"standard":"<iframe src='https://ktpl.kpoint.com/web/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'></iframe>","advanced":"<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-a0935947-c987-4ef4-b171-10392afef509' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'></script>"},"transcript_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/transcripts/default","thumbnail_path":"thumb.jpg","reviewer_username":null,"owner_email":"swanand.pawar@kpoint.com","app_url":"https://ktpl.kpoint.com/web/videos/gcc-a0935947-c987-4ef4-b171-10392afef509","play_url":"https://ktpl.kpoint.com/web/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/play","src":"VIDEO","scenes_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/scenes","annotations_suffix":"/videos/gcc-a0935947-c987-4ef4-b171-10392afef509/annotations","properties":{"upload_video_path":"upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up3721610/o_1j6cc9lgf18hc1aojvj92krmi9d/o_1j6cc9lgf18hc1aojvj92krmi9d.mp4","stt.confidence":"1.0","smart.scene.artifact.count":"3","hlsonly":"true","stt.language":"en-IN","video.res.720":"done","video_download_flag":"false","video.res.240":"done","video.res.360":"done","stt.state":"done","comment_type":"ALL","video.res.480":"done","stt.start_time":"1759204823648","short_video":"true","scene.artifact.count":"3","restricted_video":"false"},"time_sort":null},
-{"comment_count":0,"non_interactive_flag":false,"_score":1,"live_event":null,"time_created":"2025-08-07T18:38:13+05:30","review_request_state":"NA","teleport_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/teleport","id":"gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886","suggested_tags":["AI_Group","Asia","business_collaboration","Data_AIA_Life_Insurance","deep_roots","excellent_work","expertise","financial_services","India","insurance","insurance_industry","joint_venture","market_expansion","powerful_partnership","Tata_Sunns"],"images":{"thumb":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/i/16x9-thumb.jpg","fallback":{"thumb":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/i/16x9-thumb.jpg","full":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/i/16x9-full.jpg","vthumb":"https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/i/vthumb.jpg"},"full":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/i/16x9-full.jpg","vthumb":"https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/i/vthumb.jpg"},"bookmarks_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/bookmarks","v4_embed_url":"https://ktpl.kpoint.com/web/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/nv4/embedded","offline_hls_url":"","has_transcript":true,"tags":[],"status":"ready","aspect_ratio":"9:16","gif_path":null,"transcript_name":"auto","quiz_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/quiz","comments_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/comments","deleted_flag":false,"can_access_kapsule":true,"categories":{},"time_metadata_update":"20250807T18:46:25","expiry_date":null,"standard_embed_code":"<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-cdn.js'></script>","polls_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/polls","show_transcript_flag":false,"scorm_created_flag":false,"api_prefix":"https://ktpl.kpoint.com/api/v3","featured_flag":false,"displayname":"Nikhil__Tata AIA_Enhanced Audio","api_suffix":"/video/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886","owner_displayname":"Anisha Vijayan","view_count":65,"time_publish":"2025-08-07T18:38:13+05:30","delete_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/delete","time_last_update":"2026-02-06T18:31:35+05:30","questions_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/questions","comment_enabled_flag":true,"artifacts":["TRANSCRIPT","SCENE"],"like_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/like","owner_name":"anis.vijxe29a56fb7863644","like_count":0,"live_event_flag":false,"visibility":"PUBLIC","can_manage":false,"author":null,"review_update_date":null,"time_last_featured":null,"review_comments":null,"time_last_generate":"2025-08-07T18:40:05+05:30","reviewer_displayname":null,"scorm_enabled_flag":false,"revision":5,"rating_count":0,"published_duration":22,"cdn_url":"ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/v5/view/html5","share_url":"https://ktpl.kpoint.com/web/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886?vsrc=shm","name":"gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886","notify_flag":true,"published_flag":true,"description":"","embed_markup":{"standard":"<iframe src='https://ktpl.kpoint.com/web/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'></iframe>","advanced":"<div data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886' data-samesite=true data-ar='9:16' class='kpoint-embedded-video' style='width:320px' ></div><script type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'></script>"},"transcript_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/transcripts/default","thumbnail_path":"thumb.jpg","reviewer_username":null,"owner_email":"anisha.vijayan@kpoint.com","app_url":"https://ktpl.kpoint.com/web/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886","play_url":"https://ktpl.kpoint.com/web/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/play","src":"VIDEO","scenes_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/scenes","annotations_suffix":"/videos/gcc-d0e09cb8-c094-4dc0-aca1-9ec89e2d8886/annotations","properties":{"upload_video_path":"upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up6342208/o_1j22aa65g1nil1pmq9op188v1i00f/o_1j22aa65g1nil1pmq9op188v1i00f.mp4","stt.confidence":"1.0","smart.scene.artifact.count":"3","hlsonly":"true","stt.language":"en-IN","video_download_flag":"false","video.res.720":"done","video.res.240":"done","video.res.360":"done","stt.state":"done","comment_type":"ALL","video.res.480":"done","stt.start_time":"1754572227689","short_video":"true","scene.artifact.count":"1","restricted_video":"false"},"time_sort":null},
+    {
+      "kapsule_id": "gcc-5c06e5d7-deec-4406-a693-908a65ad073a",
+      "id": "gcc-5c06e5d7-deec-4406-a693-908a65ad073a",
+      "story": null,
+      "displayname": "Product meeting 2nd Dec",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 0,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-5c06e5d7-deec-4406-a693-908a65ad073a' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-5c06e5d7-deec-4406-a693-908a65ad073a",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5c06e5d7-deec-4406-a693-908a65ad073a/v4/i/16x9-thumb.jpg",
+      "title": "Product meeting 2nd Dec",
+      "tags": [],
+      "suggestedTags": [],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "SCENE"
+      ],
+      "timeCreated": "20251202T18:46:08",
+      "timeLastUpdated": "20251202T18:55:37",
+      "timeLastGenerate": "20251202T18:48:01",
+      "duration": 2456,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-5c06e5d7-deec-4406-a693-908a65ad073a?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "quickshoot.video": "true",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "upload_chunk_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/record/up7351759/2b2b0bf8-cdcf-4883-903a-08ecf5389193/video/data-",
+        "high_precision": "0",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1764681503681",
+        "scene.artifact.count": "2"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    },
+    {
+      "kapsule_id": "gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8",
+      "id": "gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8",
+      "story": null,
+      "displayname": "swayam 2.0 internal app deployement",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 1,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8/v4/i/16x9-thumb.jpg",
+      "title": "swayam 2.0 internal app deployement",
+      "tags": [],
+      "suggestedTags": [],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "SCENE"
+      ],
+      "timeCreated": "20251201T15:42:00",
+      "timeLastUpdated": "20251219T22:35:17",
+      "timeLastGenerate": "20251201T15:47:08",
+      "duration": 1629,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-03b6812e-f8ec-492b-ae99-06da43c9a8e8?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "quickshoot.video": "true",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "upload_chunk_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/record/up7351475/7ede51e7-925c-4647-b286-4dbe9b76c9fc/video/data-",
+        "high_precision": "0",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1764584250978",
+        "scene.artifact.count": "2"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    },
+    {
+      "kapsule_id": "gcc-707d8722-fe07-44f7-b623-f0636e588e37",
+      "id": "gcc-707d8722-fe07-44f7-b623-f0636e588e37",
+      "story": null,
+      "displayname": "Sarvam 2.0 swagger documentation",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 1,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-707d8722-fe07-44f7-b623-f0636e588e37/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-707d8722-fe07-44f7-b623-f0636e588e37/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-707d8722-fe07-44f7-b623-f0636e588e37/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-707d8722-fe07-44f7-b623-f0636e588e37/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-707d8722-fe07-44f7-b623-f0636e588e37/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-707d8722-fe07-44f7-b623-f0636e588e37' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-707d8722-fe07-44f7-b623-f0636e588e37",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-707d8722-fe07-44f7-b623-f0636e588e37/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-707d8722-fe07-44f7-b623-f0636e588e37/v4/i/16x9-thumb.jpg",
+      "title": "Sarvam 2.0 swagger documentation",
+      "tags": [],
+      "suggestedTags": [
+        "API_integration",
+        "authorization",
+        "computational_thinking",
+        "conversational_interface",
+        "demo",
+        "document",
+        "DSA_course",
+        "flashcards",
+        "formative_assessment",
+        "ingestion",
+        "mind_maps",
+        "summary_notes",
+        "tender",
+        "voice_interruptions",
+        "web_RTC"
+      ],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20251128T15:37:15",
+      "timeLastUpdated": "20251219T22:38:39",
+      "timeLastGenerate": "20251128T15:54:22",
+      "duration": 1987,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-707d8722-fe07-44f7-b623-f0636e588e37?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "video.res.720": "done",
+        "quickshoot.video": "true",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "upload_chunk_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/record/up156983/4d9c1598-1961-44f4-be5a-da6f42eb971d/screen/data-",
+        "high_precision": "0",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1764325484699",
+        "scene.artifact.count": "2"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    },
+    {
+      "kapsule_id": "gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0",
+      "id": "gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0",
+      "story": null,
+      "displayname": "Screen Recording 2025-11-11 131356 2",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 0,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0/v4/i/16x9-thumb.jpg",
+      "title": "Screen Recording 2025-11-11 131356 2",
+      "tags": [],
+      "suggestedTags": [],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20251112T19:34:43",
+      "timeLastUpdated": "20251112T19:55:33",
+      "timeLastGenerate": "20251112T19:45:19",
+      "duration": 2024,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-21164f76-9ce6-4ce1-9e9b-267ac0c5f5f0?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "video.res.240": "done",
+        "upload_video_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up611708/o_1j9s5kqsg1u2oqn01o2pocb10kcd/o_1j9s5kqsg1u2oqn01o2pocb10kcd.mp4",
+        "video.res.360": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "video.res.720": "done"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": false,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    },
+    {
+      "kapsule_id": "gcc-aa272069-f59c-42c6-8842-2a86a3551d1d",
+      "id": "gcc-aa272069-f59c-42c6-8842-2a86a3551d1d",
+      "story": null,
+      "displayname": "IL take care app - flutter SDK",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 6,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-aa272069-f59c-42c6-8842-2a86a3551d1d' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d/v4/i/16x9-thumb.jpg",
+      "title": "IL take care app - flutter SDK",
+      "tags": [],
+      "suggestedTags": [
+        "analytics_tracking",
+        "app_development",
+        "auto_play",
+        "category",
+        "content_management",
+        "content_sequencing",
+        "customer_support",
+        "cut_off",
+        "deep_linking",
+        "fill_in",
+        "home_page",
+        "integration",
+        "interactive_videos",
+        "knowledge_base",
+        "listing",
+        "make_up_words",
+        "multilingual_support",
+        "playlist",
+        "playlist_functionality",
+        "real-time_updates",
+        "SDK",
+        "SDK_implementation",
+        "sentence",
+        "thumbnail",
+        "thumbnail_mapping",
+        "user_experience",
+        "video",
+        "video_categorization",
+        "video_integration",
+        "video_playback"
+      ],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "VISMARK",
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20251110T17:41:36",
+      "timeLastUpdated": "20251111T18:50:04",
+      "timeLastGenerate": "20251110T18:17:07",
+      "duration": 4098,
+      "show_transcript_flag": true,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-aa272069-f59c-42c6-8842-2a86a3551d1d?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "MEMBERS",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "video.res.720": "done",
+        "quickshoot.video": "true",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "upload_chunk_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/record/up944309/a466fdba-4558-4eda-97e7-3fb877a9f9f3/screen/data-",
+        "high_precision": "0",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1762778849387",
+        "scene.artifact.count": "2",
+        "auto_highlight_job_status": "success"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": true,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    },
+    {
+      "kapsule_id": "gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1",
+      "id": "gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1",
+      "story": null,
+      "displayname": "Academy_redirection",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 0,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1/v4/i/16x9-thumb.jpg",
+      "title": "Academy_redirection",
+      "tags": [],
+      "suggestedTags": [],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20251105T15:31:48",
+      "timeLastUpdated": "20251107T18:26:48",
+      "timeLastGenerate": "20251105T15:48:23",
+      "duration": 1359,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-3d9747e9-d7d0-40be-b295-25f43e6841c1?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "stt.confidence": "1.0",
+        "smart.scene.artifact.count": "3",
+        "hlsonly": "true",
+        "stt.language": "en-IN",
+        "video.res.720": "done",
+        "quickshoot.video": "true",
+        "video.res.240": "done",
+        "video.res.360": "done",
+        "upload_chunk_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/record/up4153/42617a64-2873-4df2-b12a-1d39e9071e9f/screen/data-",
+        "high_precision": "0",
+        "stt.state": "done",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "stt.start_time": "1762344059653",
+        "scene.artifact.count": "66"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    },
+    {
+      "kapsule_id": "gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a",
+      "id": "gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a",
+      "story": null,
+      "displayname": "chapter1_paper1",
+      "likeCount": 0,
+      "isLiked": 0,
+      "playCount": 3,
+      "description": "",
+      "images": {
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/v4/i/16x9-thumb.jpg",
+        "fallback": {
+          "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/v4/i/16x9-thumb.jpg",
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/v4/i/16x9-full.jpg"
+        },
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/v4/i/16x9-full.jpg"
+      },
+      "embedUrl": null,
+      "embedMarkup": {
+        "standard": "\u003Ciframe src='https://ktpl.kpoint.com/web/videos/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/nv4/embedded' allowFullScreen webkitallowFullScreen mozallowFullScreen width='640' height='360' rel='nofollow' style='border: 0px;'\u003E\u003C/iframe\u003E",
+        "advanced": "\u003Cdiv data-video-host='ktpl.kpoint.com' data-kvideo-id='gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a' data-samesite=true style='width:100%' \u003E\u003C/div\u003E\u003Cscript type='text/javascript' src='https://ktpl.kpoint.com/assets/orca/media/embed/player-silk.js'\u003E\u003C/script\u003E"
+      },
+      "appUrl": "https://ktpl.kpoint.com/web/videos/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a",
+      "v3EmbedUrl": null,
+      "v4_embed_url": "https://ktpl.kpoint.com/web/videos/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/nv4/embedded",
+      "ownerDisplayname": "shekhar.bhabad",
+      "ownerName": "shekharb11534180",
+      "author": "",
+      "thumbnailUrl": null,
+      "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a/v4/i/16x9-thumb.jpg",
+      "title": "chapter1_paper1",
+      "tags": [],
+      "suggestedTags": [],
+      "categories": {
+
+      },
+      "artifacts": [
+        "TRANSCRIPT",
+        "VISMARK",
+        "TAG_INDEXER",
+        "SCENE"
+      ],
+      "timeCreated": "20251101T23:40:04",
+      "timeLastUpdated": "20251104T15:07:12",
+      "timeLastGenerate": "20251101T23:49:19",
+      "duration": 6989,
+      "show_transcript_flag": false,
+      "live_event": {
+
+      },
+      "src": "VIDEO",
+      "shareUrl": "https://ktpl.kpoint.com/web/videos/gcc-484a6bab-018f-46f2-b0de-2f8d4f8f644a?vsrc=shm",
+      "contentOwners": [],
+      "thumbnailProcessing": false,
+      "visibility": "PRIVATE",
+      "isPodcast": "false",
+      "isParticipantLinkEnabled": "false",
+      "type": "VIDEO",
+      "canManage": false,
+      "content_owners": {
+
+      },
+      "commentEnabledFlag": true,
+      "status": "ready",
+      "liveEventFlag": false,
+      "properties": {
+        "video.res.240": "done",
+        "upload_video_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up1871976/o_1j909jsfpe7d1uv21458102q41hd/o_1j909jsfpe7d1uv21458102q41hd.mp4",
+        "video.res.360": "done",
+        "stt.confidence": "1.0",
+        "stt.state": "processing",
+        "comment_type": "ALL",
+        "video.res.480": "done",
+        "smart.scene.artifact.count": "3",
+        "stt.start_time": "1762021581533",
+        "hlsonly": "true",
+        "scene.artifact.count": "60",
+        "auto_highlight_job_status": "success"
+      },
+      "deletedFlag": false,
+      "canUserAccessKapsule": false,
+      "canReview": false,
+      "publishedFlag": true,
+      "reviewRequestState": "NA",
+      "reviewerUsername": "",
+      "reviewerDisplayname": "",
+      "reviewComments": "",
+      "reviewUpdateDate": "",
+      "expiryDate": "",
+      "scormCreatedFlag": false,
+      "scormEnabledFlag": false,
+      "notifyFlag": true,
+      "nonInteractiveFlag": false,
+      "showTranscriptFlag": false,
+      "serialNumber": "",
+      "isQnAEnabled": false,
+      "publishedOn": null,
+      "transcriptUrl": "",
+      "hasTranscript": true,
+      "featuredFlag": false,
+      "aspectRatio": "16:9",
+      "isShortVideo": "false",
+      "strictAccess": "false"
+    }
 ];
 
 // Helper function to get mock videos
@@ -578,4 +1563,116 @@ export function extractTemplatesFromVideos(): MockPartnerTemplate[] {
   templates.push(...additionalTemplates);
 
   return templates;
+}
+
+/**
+ * Mock storage for shoppable templates applied to videos
+ * In-memory storage that persists during development session
+ */
+export interface MockShoppableTemplate {
+  videoId: string;
+  packageId: string;
+  embedCode: string;
+  appliedAt: string;
+  state: string;
+}
+
+// In-memory storage for mock shoppable templates
+const mockShoppableTemplates = new Map<string, MockShoppableTemplate>();
+
+/**
+ * Add a shoppable template to a video (mock mode)
+ */
+export function addMockShoppableTemplate(
+  videoId: string,
+  packageId: string,
+  embedCode: string
+): void {
+  const key = `${videoId}-${packageId}`;
+  const timestamp = new Date().toISOString();
+
+  mockShoppableTemplates.set(key, {
+    videoId,
+    packageId,
+    embedCode,
+    appliedAt: timestamp,
+    state: "PUBLISHED",
+  });
+
+  // Also update the video's interactivity_packages array
+  const video = mockVideos.find((v) => v.id === videoId);
+  if (video) {
+    // Initialize interactivity_packages as an array if it doesn't exist
+    if (!(video as any).interactivity_packages) {
+      (video as any).interactivity_packages = [];
+    }
+
+    // Check if package already exists
+    const existingPackageIndex = (video as any).interactivity_packages.findIndex(
+      (pkg: any) => pkg.id === packageId
+    );
+
+    const packageData = {
+      id: packageId,
+      name: getTemplateName(packageId),
+      state: "PUBLISHED",
+      time_created: timestamp,
+      time_last_published: timestamp,
+    };
+
+    if (existingPackageIndex >= 0) {
+      // Update existing package
+      (video as any).interactivity_packages[existingPackageIndex] = packageData;
+    } else {
+      // Add new package
+      (video as any).interactivity_packages.push(packageData);
+    }
+
+    console.log(`✅ Updated mock video ${videoId} with template ${packageId}`);
+  }
+}
+
+function getTemplateName(templateId: string): string {
+  const nameMap: Record<string, string> = {
+    "shoppable-v1": "Shoppable Template",
+  };
+  return nameMap[templateId] || templateId;
+}
+
+/**
+ * Get all shoppable templates (mock mode)
+ * Optionally filter by package ID
+ */
+export function getMockShoppableTemplates(
+  packageId?: string
+): MockShoppableTemplate[] {
+  const templates = Array.from(mockShoppableTemplates.values());
+
+  if (packageId) {
+    return templates.filter((t) => t.packageId === packageId);
+  }
+
+  return templates;
+}
+
+/**
+ * Remove a shoppable template from a video (mock mode)
+ */
+export function removeMockShoppableTemplate(
+  videoId: string,
+  packageId: string
+): boolean {
+  const key = `${videoId}-${packageId}`;
+  return mockShoppableTemplates.delete(key);
+}
+
+/**
+ * Get shoppable template for a specific video and package (mock mode)
+ */
+export function getMockShoppableTemplate(
+  videoId: string,
+  packageId: string
+): MockShoppableTemplate | undefined {
+  const key = `${videoId}-${packageId}`;
+  return mockShoppableTemplates.get(key);
 }

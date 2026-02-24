@@ -1,8 +1,8 @@
 "use client";
 
-import { Video, Package, Calendar, Share2 } from "lucide-react";
+import { Video, Calendar, CheckCircle2 } from "lucide-react";
 
-interface VideoCardProps {
+interface ShoppableVideoCardProps {
   video: {
     id: string;
     title: string;
@@ -13,8 +13,9 @@ interface VideoCardProps {
     interactivity_packages?: { id: string; name?: string }[];
     [key: string]: unknown;
   };
-  onViewTemplates: () => void;
-  onShare: () => void;
+  selected: boolean;
+  onToggle: () => void;
+  packageId?: string; // To check if template already applied
 }
 
 function formatDate(dateStr?: string): string {
@@ -37,12 +38,25 @@ function formatDuration(seconds?: number): string {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
-export function VideoCard({ video, onViewTemplates, onShare }: VideoCardProps) {
-  const packageCount = video.interactivity_packages?.length || 0;
+export function ShoppableVideoCard({
+  video,
+  selected,
+  onToggle,
+  packageId,
+}: ShoppableVideoCardProps) {
+  // Check if this package is already applied to this video
+  const hasPackage = packageId
+    ? video.interactivity_packages?.some((pkg) => pkg.id === packageId)
+    : false;
 
   return (
-    <div className="card p-0 overflow-hidden hover:shadow-md transition-shadow duration-200">
-      {/* Thumbnail */}
+    <div
+      className={`card p-0 overflow-hidden hover:shadow-md transition-all duration-200 cursor-pointer ${
+        selected ? "ring-2 ring-kpoint-600" : ""
+      }`}
+      onClick={onToggle}
+    >
+      {/* Thumbnail with checkbox */}
       <div className="aspect-video bg-gray-100 relative">
         {video.thumbnail_url ? (
           <img
@@ -55,7 +69,28 @@ export function VideoCard({ video, onViewTemplates, onShare }: VideoCardProps) {
             <Video className="w-12 h-12 text-gray-300" />
           </div>
         )}
-        {video.duration && (
+
+        {/* Checkbox in top-left */}
+        <div className="absolute top-2 left-2">
+          <input
+            type="checkbox"
+            checked={selected}
+            onChange={onToggle}
+            onClick={(e) => e.stopPropagation()}
+            className="w-5 h-5 rounded border-2 border-white bg-white/90 cursor-pointer accent-kpoint-600"
+          />
+        </div>
+
+        {/* Template already applied badge */}
+        {hasPackage && (
+          <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded flex items-center gap-1">
+            <CheckCircle2 className="w-3 h-3" />
+            Applied
+          </div>
+        )}
+
+        {/* Duration badge */}
+        {video.duration && !hasPackage && (
           <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
             {formatDuration(video.duration)}
           </span>
@@ -74,33 +109,11 @@ export function VideoCard({ video, onViewTemplates, onShare }: VideoCardProps) {
           </p>
         )}
 
-        <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+        <div className="flex items-center gap-4 text-xs text-gray-400">
           <span className="flex items-center gap-1">
             <Calendar className="w-3 h-3" />
             {formatDate(video.created_at)}
           </span>
-          {packageCount > 0 && (
-            <span className="flex items-center gap-1">
-              <Package className="w-3 h-3" />
-              {packageCount} template{packageCount !== 1 ? "s" : ""}
-            </span>
-          )}
-        </div>
-
-        <div className="flex gap-2">
-          <button
-            onClick={onViewTemplates}
-            className="btn-primary flex-1 text-sm py-2"
-          >
-            View Templates
-          </button>
-          <button
-            onClick={onShare}
-            className="btn-secondary px-3 py-2 flex items-center justify-center"
-            title="Share video"
-          >
-            <Share2 className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </div>

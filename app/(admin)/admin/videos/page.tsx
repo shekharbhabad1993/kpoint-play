@@ -7,7 +7,9 @@ import { ErrorState } from "@/components/shared/error-state";
 import { EmptyState } from "@/components/shared/empty-state";
 import { VideoCard } from "@/components/admin/video-card";
 import { TemplatesModal } from "@/components/admin/templates-modal";
-import { PublishModal } from "@/components/admin/publish-modal";
+import { AddTemplateModal } from "@/components/admin/add-template-modal";
+import { ShareVideoModal } from "@/components/admin/share-video-modal";
+import { getMockVideos, simulateDelay } from "@/lib/kpoint/mock-data";
 
 interface Video {
   id: string;
@@ -29,22 +31,37 @@ export default function VideosPage() {
   // Templates Modal
   const [templatesVideo, setTemplatesVideo] = useState<Video | null>(null);
 
-  // Publish Modal
-  const [publishPackage, setPublishPackage] = useState<{
-    id: string;
-    name: string;
-  } | null>(null);
+  // Add Template Modal
+  const [addTemplateVideo, setAddTemplateVideo] = useState<Video | null>(null);
+
+  // Share Video Modal
+  const [shareVideo, setShareVideo] = useState<Video | null>(null);
 
   const fetchVideos = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch("/api/kpoint/videos?scope=trending");
-      if (!res.ok) throw new Error("Failed to fetch videos");
-      const data = await res.json();
-      // Handle various response shapes from KPOINT
-      const videoList = data.videos || data.results || data.data || [];
-      setVideos(Array.isArray(videoList) ? videoList : []);
+      console.log("📦 Using mock videos from mock-data.ts");
+      // Simulate API delay for realistic UX
+      await simulateDelay(500);
+
+      // Get mock videos instead of fetching from API
+      const mockVideos = getMockVideos();
+
+      // Map mock video structure to Video interface
+      const videoList = mockVideos.map((mockVideo) => ({
+        id: mockVideo.id,
+        title: mockVideo.title,
+        description: mockVideo.description,
+        thumbnail_url: mockVideo.images.thumb,
+        created_at: mockVideo.time_created,
+        duration: mockVideo.duration,
+        status: mockVideo.status,
+        interactivity_packages: mockVideo.interactivity_packages || [],
+      }));
+
+      setVideos(videoList);
+      console.log(`✅ Loaded ${videoList.length} mock videos`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load videos");
     } finally {
@@ -79,6 +96,7 @@ export default function VideosPage() {
                 key={video.id}
                 video={video}
                 onViewTemplates={() => setTemplatesVideo(video)}
+                onShare={() => setShareVideo(video)}
               />
             ))}
           </div>
@@ -90,17 +108,38 @@ export default function VideosPage() {
         video={templatesVideo}
         open={!!templatesVideo}
         onClose={() => setTemplatesVideo(null)}
-        onPublish={(pkg) => {
-          setTemplatesVideo(null);
-          setPublishPackage(pkg);
+        onAddTemplate={() => {
+          setAddTemplateVideo(templatesVideo);
         }}
       />
 
-      {/* Publish Modal */}
-      <PublishModal
-        packageInfo={publishPackage}
-        open={!!publishPackage}
-        onClose={() => setPublishPackage(null)}
+      {/* Add Template Modal */}
+      <AddTemplateModal
+        video={addTemplateVideo}
+        open={!!addTemplateVideo}
+        onClose={() => setAddTemplateVideo(null)}
+        onSuccess={async () => {
+          setAddTemplateVideo(null);
+
+          // Wait for KPOINT API to update (1 second delay)
+          await new Promise(resolve => setTimeout(resolve, 1000));
+
+          // Force refresh templates modal with updated data
+          if (templatesVideo) {
+            // Trigger re-fetch by changing the video object reference
+            setTemplatesVideo({ ...templatesVideo, _refreshKey: Date.now() } as any);
+          }
+        }}
+      />
+
+      {/* Share Video Modal */}
+      <ShareVideoModal
+        video={shareVideo}
+        open={!!shareVideo}
+        onClose={() => setShareVideo(null)}
+        onSuccess={() => {
+          console.log("✅ Video shared successfully");
+        }}
       />
     </>
   );

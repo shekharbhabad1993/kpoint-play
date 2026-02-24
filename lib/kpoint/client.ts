@@ -35,6 +35,7 @@ async function makeRequest(
 
   // Generate JWT auth parameters
   const authParams = getKPointAuthParams();
+  console.log(`🔐 Generated JWT token (${authParams.token.length} chars) and KCID: ${authParams.kcid}`);
 
   // Build URL with auth parameters
   let url = getApiUrl(path);
@@ -44,6 +45,7 @@ async function makeRequest(
     ...params,
   });
   url += `?${urlParams.toString()}`;
+  console.log(`🌐 Full request URL: ${url.split('?')[0]}?token=***&kcid=${authParams.kcid}`);
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
