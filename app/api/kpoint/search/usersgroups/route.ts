@@ -66,30 +66,53 @@ export async function GET(request: NextRequest) {
     // Transform response to consistent format
     const results: UserGroupSearchResult[] = [];
 
-    if (response.users) {
-      for (const user of response.users) {
-        results.push({
-          id: user.username || user.name,
-          name: user.username || user.name,
-          displayname: user.displayname || user.display_name,
-          type: "user",
-          email: user.email,
-        });
+    // Check if response is an array (actual KPOINT API format)
+    if (Array.isArray(response)) {
+      for (const item of response) {
+        if (item.type === "USER") {
+          results.push({
+            id: item.name || item.username || String(item.id),
+            name: item.name || item.username,
+            displayname: item.displayname || item.display_name,
+            type: "user",
+            email: item.email,
+          });
+        } else if (item.type === "GROUP") {
+          results.push({
+            id: item.name || item.groupname || String(item.id),
+            name: item.name || item.groupname,
+            displayname: item.displayname || item.display_name,
+            type: "group",
+          });
+        }
+      }
+    } else {
+      // Fallback: check for users/groups properties (alternative API format)
+      if (response.users) {
+        for (const user of response.users) {
+          results.push({
+            id: user.username || user.name,
+            name: user.username || user.name,
+            displayname: user.displayname || user.display_name,
+            type: "user",
+            email: user.email,
+          });
+        }
+      }
+
+      if (response.groups) {
+        for (const group of response.groups) {
+          results.push({
+            id: group.name || group.groupname,
+            name: group.name || group.groupname,
+            displayname: group.displayname || group.display_name,
+            type: "group",
+          });
+        }
       }
     }
 
-    if (response.groups) {
-      for (const group of response.groups) {
-        results.push({
-          id: group.name || group.groupname,
-          name: group.name || group.groupname,
-          displayname: group.displayname || group.display_name,
-          type: "group",
-        });
-      }
-    }
-
-    console.log(`✅ Found ${results.length} users/groups`);
+    console.log(`✅ Found ${results.length} users/groups:`, results);
 
     return NextResponse.json({
       results,

@@ -57,9 +57,9 @@ export async function PUT(
     const payload = {
       visibility: "MEMBERS",
       isLiveEvent: false,
-      mail_flag: sendEmail,
+      mail_flag: false, // Ensure it's explicitly boolean
       membershipData: {
-        mail_flag: sendEmail ? 1 : 0,
+        mail_flag: false,
         users,
         groups,
       },
@@ -67,7 +67,7 @@ export async function PUT(
     };
 
     console.log(`🚀 Calling KPOINT API: PUT /api/v3/videos/${videoId}`);
-    console.log(`📦 Payload:`, payload);
+    console.log(`📦 Payload:`, JSON.stringify(payload, null, 2));
 
     await kpointClient.put(path, payload);
 
