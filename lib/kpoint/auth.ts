@@ -21,6 +21,16 @@ export async function getAccessToken(): Promise<string> {
 export async function refreshToken(): Promise<string> {
   const { clientId, clientSecret, baseUrl } = config.kpoint;
 
+  // Mock mode check
+  if (config.kpoint.mockMode) {
+    console.log("🎭 Mock mode enabled - returning mock access token");
+    tokenCache = {
+      accessToken: "mock_access_token_12345",
+      expiresAt: Date.now() + 3600 * 1000,
+    };
+    return tokenCache.accessToken;
+  }
+
   if (!clientId || !clientSecret) {
     throw new KPointAuthError(
       "KPOINT_CLIENT_ID and KPOINT_CLIENT_SECRET must be set in environment variables"
