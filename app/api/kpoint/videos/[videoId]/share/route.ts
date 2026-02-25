@@ -54,16 +54,21 @@ export async function PUT(
     console.log(`👥 Groups: ${groups.join(", ")}`);
 
     const path = `/videos/${videoId}`;
+
+    // Create membershipData as a JSON string (KPOINT API requirement)
+    const membershipData = JSON.stringify({
+      mail_flag: sendEmail ? 1 : 0,
+      users,
+      groups,
+    });
+
     const payload = {
       visibility: "MEMBERS",
       isLiveEvent: false,
-      mail_flag: false, // Ensure it's explicitly boolean
-      membershipData: {
-        mail_flag: false,
-        users,
-        groups,
-      },
+      mail_flag: false,
+      membershipData, // Send as JSON string
       published_flag: true,
+      ctx: "quickshoot",
     };
 
     console.log(`🚀 Calling KPOINT API: PUT /api/v3/videos/${videoId}`);
