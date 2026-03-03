@@ -33,14 +33,14 @@ export async function GET(request: NextRequest) {
           id: "user123",
           name: "john.doe",
           displayname: "John Doe",
-          type: "user",
+          type: "user" as const,
           email: "john.doe@example.com",
         },
         {
           id: "group456",
           name: "test-group",
           displayname: "Test Group",
-          type: "group",
+          type: "group" as const,
         },
       ].filter((item) =>
         item.name.toLowerCase().includes(qtext.toLowerCase()) ||
@@ -57,9 +57,9 @@ export async function GET(request: NextRequest) {
     console.log(`📤 Query params:`, { qtext });
     const path = `/search/usersgroups`;
 
-    const response = await kpointClient.get<any>(path, {
+    const response = await kpointClient.get(path, {
       qtext,
-    });
+    }) as any;
 
     console.log(`📥 Raw API response:`, JSON.stringify(response, null, 2));
 

@@ -56,14 +56,14 @@ export async function POST(request: NextRequest) {
       await simulateDelay(500);
 
       // Generate embed code
-      const embedCode = generateEmbedCodeFromTemplate(template_id, video);
+      const embedCode = generateEmbedCodeFromTemplate(template_id, video as any);
 
       // Store in mock storage
       addMockShoppableTemplate(video_id, template_id, embedCode);
 
       // Return with mock packages
       const mockPackages = [
-        ...(video.interactivity_packages || []),
+        ...((video as any).interactivity_packages || []),
         {
           id: template_id,
           name: "Shoppable Template",
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       console.log(`📤 Applying template ${template_id} to video ${video_id}`);
 
       // Generate embed code
-      const embedCode = generateEmbedCodeFromTemplate(template_id, video);
+      const embedCode = generateEmbedCodeFromTemplate(template_id, video as any);
       console.log(`✅ Generated embed code (${embedCode.length} chars, base64)`);
 
       // Apply to video via KPOINT API
@@ -120,13 +120,13 @@ export async function POST(request: NextRequest) {
       } else {
         updatedVideo = await getVideo(video_id);
       }
-      console.log(`📦 Updated video has ${updatedVideo.interactivity_packages?.length || 0} packages`);
+      console.log(`📦 Updated video has ${(updatedVideo as any).interactivity_packages?.length || 0} packages`);
 
       return NextResponse.json({
         success: true,
         video_id,
         template_id,
-        updated_packages: updatedVideo.interactivity_packages || [],
+        updated_packages: (updatedVideo as any).interactivity_packages || [],
       });
     } catch (error: any) {
       console.error(`❌ Failed to apply template to video ${video_id}:`, error);

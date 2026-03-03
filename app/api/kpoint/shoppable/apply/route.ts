@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  validateTemplateHtml,
-  validatePackageId,
-  generateShoppableEmbedCode,
-  applyShoppableTemplate,
+  validateTemplateId,
+  generateEmbedCodeFromTemplate,
+  applyTemplateToSingleVideo,
   ApplyTemplateResult,
 } from "@/lib/kpoint/shoppable";
 import { listVideos } from "@/lib/kpoint/videos";
@@ -32,15 +31,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const packageValidation = validatePackageId(package_id);
-    if (!packageValidation.valid) {
+    // Basic validation
+    if (!package_id || package_id.trim() === "") {
       return NextResponse.json(
-        { error: packageValidation.error },
+        { error: "Invalid package_id" },
         { status: 400 }
       );
     }
 
-    const templateValidation = validateTemplateHtml(template_html);
+    const templateValidation = validateTemplateId(package_id);
     if (!templateValidation.valid) {
       return NextResponse.json(
         { error: templateValidation.error },
@@ -72,7 +71,7 @@ export async function POST(request: NextRequest) {
         }
 
         // Generate embed code
-        const embedCode = generateShoppableEmbedCode(template_html, video);
+        const embedCode = generateEmbedCodeFromTemplate(package_id, video);
 
         // Store in mock storage
         addMockShoppableTemplate(videoId, package_id, embedCode);
@@ -116,10 +115,10 @@ export async function POST(request: NextRequest) {
         }
 
         // Generate embed code
-        const embedCode = generateShoppableEmbedCode(template_html, video);
+        const embedCode = generateEmbedCodeFromTemplate(package_id, video);
 
         // Apply to video via KPOINT API
-        await applyShoppableTemplate(videoId, package_id, embedCode);
+        await applyTemplateToSingleVideo(videoId, package_id, video);
 
         results.push({
           video_id: videoId,

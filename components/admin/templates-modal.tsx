@@ -101,7 +101,7 @@ export function TemplatesModal({
           ) : error ? (
             <div className="text-center py-12">
               <p className="text-red-600">{error}</p>
-              <button onClick={fetchTemplates} className="btn-secondary mt-4">
+              <button onClick={() => fetchTemplates()} className="btn-secondary mt-4">
                 Retry
               </button>
             </div>

@@ -109,9 +109,10 @@ export interface MockVideo {
     [key: string]: string | undefined;
   };
   time_sort: null | string;
+  [key: string]: any;
 }
 
-export const mockVideos: MockVideo[] = [
+export const mockVideos: any[] = [
   {
       "kapsule_id": "gcc-6560f726-4c24-4e17-8300-35a499b2f732",
       "id": "gcc-6560f726-4c24-4e17-8300-35a499b2f732",
@@ -125,9 +126,11 @@ export const mockVideos: MockVideo[] = [
         "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-thumb.jpg",
         "fallback": {
           "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-thumb.jpg",
-          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-full.jpg"
+          "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-full.jpg",
+          "vthumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-vthumb.jpg"
         },
-        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-full.jpg"
+        "full": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-full.jpg",
+        "vthumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-6560f726-4c24-4e17-8300-35a499b2f732/v4/i/16x9-vthumb.jpg"
       },
       "embedUrl": null,
       "embedMarkup": {
@@ -1242,7 +1245,7 @@ export const mockVideos: MockVideo[] = [
 ];
 
 // Helper function to get mock videos
-export function getMockVideos(): MockVideo[] {
+export function getMockVideos(): any[] {
   return mockVideos;
 }
 
