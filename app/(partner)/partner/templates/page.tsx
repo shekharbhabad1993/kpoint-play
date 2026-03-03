@@ -131,11 +131,7 @@ export default function PartnerTemplatesPage() {
           video_title: video.title,
           thumbnail_url: video.thumbnail_url,
           description: pkg.description || video.description,
-          fields: [
-            { key: "customer_name", label: "Customer Name", type: "text", required: true },
-            { key: "company_name", label: "Company Name", type: "text", required: false },
-            { key: "product_name", label: "Product Name", type: "text", required: false },
-          ],
+          // Fields will come from the actual template data via API
         }))
       );
 

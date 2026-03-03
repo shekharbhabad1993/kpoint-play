@@ -91,7 +91,7 @@ export function PersonalizationModal({
     dynamicFields ||
     template?.fields || [
       // Default fields if none specified by KPOINT
-      { key: "first_name", label: "First Name", type: "text", required: true },
+      { key: "first_name", label: "First name of the customer", type: "text", required: true },
       { key: "last_name", label: "Last Name", type: "text", required: false },
       { key: "company", label: "Company", type: "text", required: false },
       { key: "offer", label: "Offer / Message", type: "text", required: false },
