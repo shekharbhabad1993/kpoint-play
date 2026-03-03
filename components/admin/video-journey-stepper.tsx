@@ -74,7 +74,6 @@ export function VideoJourneyStepper({
     <div className="bg-white border-b border-gray-200 px-4 py-2">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-1 gap-4">
-          <h3 className="text-xs font-semibold text-gray-700">Journey</h3>
 
           {/* Video Selector */}
           {videos.length > 1 && (

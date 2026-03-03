@@ -5,11 +5,12 @@ import { Video, Package, Calendar } from "lucide-react";
 interface VideoCardProps {
   video: {
     id: string;
-    title: string;
+    displayname: string;
     description?: string;
     thumbnail_url?: string;
     created_at?: string;
     duration?: number;
+    properties?: {interactivity_packages?: { id: string; name?: string }[]};
     interactivity_packages?: { id: string; name?: string }[];
     [key: string]: unknown;
   };
@@ -37,7 +38,7 @@ function formatDuration(seconds?: number): string {
 }
 
 export function VideoCard({ video, onClick }: VideoCardProps) {
-  const packageCount = video.interactivity_packages?.length || 0;
+  const packageCount = video.interactivity_packages?.length || 1;
 
   return (
     <div
@@ -49,7 +50,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
         {video.thumbnail_url ? (
           <img
             src={video.thumbnail_url}
-            alt={video.title}
+            alt={video.displayname}
             className="w-full h-full object-cover"
           />
         ) : (
@@ -67,7 +68,7 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
       {/* Content */}
       <div className="p-2.5">
         <h3 className="font-medium text-gray-900 text-xs line-clamp-1 mb-1">
-          {video.title || "Untitled Video"}
+          {video.displayname || "Untitled Video"}
         </h3>
 
         {video.description && (

@@ -15,6 +15,7 @@ import { getClientSession } from "@/lib/utils/cookies";
 
 interface Video {
   id: string;
+  displayname: string;
   title: string;
   description?: string;
   thumbnail_url?: string;
@@ -73,9 +74,11 @@ export default function VideoDetailsPage() {
           return;
         }
 
+        const displayname = (foundVideo as any).displayname || foundVideo.title;
         const videoData: Video = {
           id: foundVideo.id,
-          title: (foundVideo as any).name,
+          displayname: displayname,
+          title: displayname,
           description: (foundVideo as any).description,
           thumbnail_url: foundVideo.images.thumb,
           created_at: foundVideo.time_created,
@@ -196,8 +199,7 @@ export default function VideoDetailsPage() {
   return (
     <>
       <Header
-        title={video.title}
-        subtitle={video.description || "Video Details"}
+        title={video.displayname}
       >
         <button
           onClick={() => router.push("/admin/videos")}
@@ -214,9 +216,9 @@ export default function VideoDetailsPage() {
       <VideoJourneyStepper
         currentStep={currentStep}
         hasActiveVideo={false}
-        activeVideoTitle={video.title}
+        activeVideoTitle={video.displayname}
         activeVideoId={video.id}
-        videos={[{ id: video.id, title: video.title }]}
+        videos={[{ id: video.id, title: video.displayname }]}
         onTemplateManage={handleTemplateManage}
         onPublish={handlePublish}
       />

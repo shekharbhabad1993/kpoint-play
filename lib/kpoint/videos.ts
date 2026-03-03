@@ -9,7 +9,7 @@ import {
 
 export interface KPointVideo {
   id: string;
-  title: string;
+  displayname: string;
   description?: string;
   thumbnail_url?: string;
   created_at?: string;
@@ -64,7 +64,7 @@ function convertMockToKPointVideo(mockVideo: MockVideo): KPointVideo {
   return {
     ...mockVideo,
     id: mockVideo.id,
-    title: mockVideo.displayname,
+    displayname: mockVideo.displayname,
     description: mockVideo.description,
     thumbnail_url: mockVideo.images.thumb,
     created_at: mockVideo.time_created,
@@ -110,7 +110,7 @@ export async function listVideos(
   const transformedVideos = Array.isArray(videoList)
     ? videoList.map((video: any) => ({
         ...video,
-        title: video.title || video.displayname || video.name,
+        displayname: video.displayname || video.displayname || video.name,
         thumbnail_url: video.thumbnail_url || video.images?.thumb,
         created_at: video.created_at || video.time_created,
         updated_at: video.updated_at || video.time_last_update,

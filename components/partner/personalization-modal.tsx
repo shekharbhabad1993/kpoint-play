@@ -86,16 +86,8 @@ export function PersonalizationModal({
     }
   }, [open, template, fetchDynamicFields]);
 
-  // Use dynamic fields if available, otherwise use template fields or defaults
-  const fields =
-    dynamicFields ||
-    template?.fields || [
-      // Default fields if none specified by KPOINT
-      { key: "first_name", label: "First name of the customer", type: "text", required: true },
-      { key: "last_name", label: "Last Name", type: "text", required: false },
-      { key: "company", label: "Company", type: "text", required: false },
-      { key: "offer", label: "Offer / Message", type: "text", required: false },
-    ];
+  // Use dynamic fields if available, otherwise use template fields
+  const fields = dynamicFields || template?.fields || [];
 
   async function onSubmit(data: Record<string, string>) {
     if (!template) return;

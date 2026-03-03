@@ -9,7 +9,8 @@ import { TemplateCard } from "@/components/partner/template-card";
 import { PersonalizationModal } from "@/components/partner/personalization-modal";
 import { UserSwitcher } from "@/components/partner/user-switcher";
 import { getClientSession } from "@/lib/utils/cookies";
-import { getMockVideos, simulateDelay } from "@/lib/kpoint/mock-data";
+import { getTemplateDefinition } from "@/lib/kpoint/template-definitions";
+import { getMockVideos } from "@/lib/kpoint/mock-data";
 
 // Extract partner from email (e.g., hdfcuser1@kpoint.com -> hdfc)
 function getPartnerTag(email?: string): string | null {
@@ -76,63 +77,83 @@ export default function PartnerTemplatesPage() {
     setLoading(true);
     setError(null);
     try {
-      // Use mock data for now
-      console.log("📦 Using mock videos from mock-data.ts");
-      await simulateDelay(500);
+      // Get only the Holi video (working end to end)
+      console.log("📦 Getting video IDs from mock data...");
       const mockVideos = getMockVideos();
+      const videoIds = mockVideos
+        .filter((v: any) => v.displayname === "Happy Holi")
+        .map((v: any) => v.id);
+      console.log(`📋 Found ${videoIds.length} videos to fetch:`, videoIds);
 
-      // Convert mock videos to Video format
-      let videoList: Video[] = mockVideos.map((mockVideo: any) => {
-        // Parse interactivity_packages from properties (it's stored as JSON string)
-        let packages: any[] = [];
+      // Fetch real-time package data for each video from KPOINT API
+      const videoList: Video[] = [];
+      for (const videoId of videoIds) {
         try {
-          const packagesJson = mockVideo.properties?.interactivity_packages;
-          if (packagesJson) {
-            packages = JSON.parse(packagesJson);
+          console.log(`🌐 Fetching real-time data for video ${videoId}...`);
+          const response = await fetch(`/api/kpoint/videos/${videoId}`);
+          if (!response.ok) {
+            console.warn(`⚠️ Failed to fetch video ${videoId}: ${response.statusText}`);
+            continue;
           }
+          const video = await response.json();
+
+          // Parse interactivity_packages from properties (it's stored as JSON string)
+          let packages: any[] = [];
+          try {
+            const packagesJson = video.properties?.interactivity_packages;
+            if (packagesJson) {
+              packages = JSON.parse(packagesJson);
+              console.log(`📋 Video ${video.id} (${video.displayname}): ${packages.length} packages`, packages);
+            }
+          } catch (err) {
+            console.error(`Failed to parse interactivity_packages for video ${video.id}:`, err);
+          }
+
+          videoList.push({
+            id: video.id,
+            title: video.displayname || video.name,
+            description: video.description,
+            thumbnail_url: video.images?.thumb,
+            interactivity_packages: packages,
+          });
         } catch (err) {
-          console.error(`Failed to parse interactivity_packages for video ${mockVideo.id}:`, err);
+          console.error(`Error fetching video ${videoId}:`, err);
         }
-
-        return {
-          id: mockVideo.id,
-          title: mockVideo.displayname || mockVideo.name,
-          description: mockVideo.description,
-          thumbnail_url: mockVideo.images.thumb,
-          interactivity_packages: packages,
-        };
-      });
-
-      // Filter by partner tag if set
-      if (partnerTag) {
-        console.log(`🔍 Filtering videos by tag: ${partnerTag}`);
-        videoList = videoList.filter((video: any) =>
-          mockVideos.find((mv: any) => mv.id === video.id)?.tags?.includes(partnerTag)
-        );
-        console.log(`✅ Found ${videoList.length} videos for partner: ${partnerTag}`);
       }
 
+      console.log(`✅ Successfully fetched ${videoList.length} videos with real-time data`);
+
       // Filter to only show videos with interactive packages
+      // No tag filtering - show all videos with packages to all partners
       const videosWithPackages = videoList.filter(
         (video: Video) =>
           video.interactivity_packages &&
           video.interactivity_packages.length > 0
       );
 
+      console.log(`📊 Total videos with templates: ${videosWithPackages.length}`);
+
       console.log(`📊 Videos with templates: ${videosWithPackages.length}`);
 
       // Convert videos to template format for the UI
       const templateList = videosWithPackages.flatMap((video: Video) =>
-        (video.interactivity_packages || []).map((pkg: InteractivityPackage) => ({
-          id: `${video.id}-${pkg.id}`,
-          package_id: pkg.id,
-          package_name: pkg.name || "Interactive Package",
-          video_id: video.id,
-          video_title: video.title,
-          thumbnail_url: video.thumbnail_url,
-          description: pkg.description || video.description,
-          // Fields will come from the actual template data via API
-        }))
+        (video.interactivity_packages || []).map((pkg: InteractivityPackage) => {
+          // Get actual template definition details
+          const templateDef = getTemplateDefinition(pkg.id);
+          const templateName = templateDef?.name || pkg.name || "Greetings";
+          const templateDescription = templateDef?.description || pkg.description || video.description;
+
+          return {
+            id: `${video.id}-${pkg.id}`,
+            package_id: pkg.id,
+            package_name: templateName,
+            video_id: video.id,
+            video_title: video.title,
+            thumbnail_url: video.thumbnail_url,
+            description: templateDescription,
+            // Fields will come from the actual template data via API
+          };
+        })
       );
 
       setTemplates(templateList);
@@ -154,23 +175,10 @@ export default function PartnerTemplatesPage() {
     <>
       <Header
         title="Templates"
-        subtitle={
-          partnerTag
-            ? `Partner: ${partnerTag.toUpperCase()} - Select a template to personalize and share`
-            : "Select a template to personalize and share"
-        }
+        subtitle="Select a template to personalize and share"
       >
         <UserSwitcher />
       </Header>
-
-      {/* Partner Info Bar */}
-      {partnerTag && userEmail && (
-        <div className="px-6 pt-4 pb-2 bg-white border-b border-gray-200">
-          <p className="text-xs text-gray-500">
-            📧 Logged in as: <span className="font-medium">{userEmail}</span> - Showing <span className="font-medium text-kpoint-600">{partnerTag.toUpperCase()}</span> templates
-          </p>
-        </div>
-      )}
 
       <div className="p-6">
         {loading ? (

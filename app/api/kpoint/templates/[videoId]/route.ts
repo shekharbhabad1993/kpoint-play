@@ -100,9 +100,10 @@ export async function GET(
 
 function getTemplateName(templateId: string): string {
   // Map template IDs to display names
+  // Note: Different videos may have different package IDs for the same template type
   const nameMap: Record<string, string> = {
-    "shoppable-v1": "Shoppable Template",
-    // Add more as templates are added
+    "52yovfxjvcdm": "Greetings", // Diwali video greetings package
+    "52iayhhljerh": "Greetings", // Holi video greetings package
   };
   return nameMap[templateId] || templateId;
 }

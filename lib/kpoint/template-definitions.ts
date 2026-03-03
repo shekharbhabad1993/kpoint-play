@@ -6,87 +6,78 @@ export interface TemplateDefinition {
   id: string;
   name: string;
   description: string;
-  category: "shoppable" | "quiz" | "poll" | "form" | "custom";
+  category: "shoppable" | "quiz" | "poll" | "form" | "greetings" | "custom";
   htmlTemplate: string;
 }
 
 /**
- * Shoppable template HTML
+ * Greetings template HTML
  * Placeholders to be replaced:
  * - {video_host} -> actual video domain
  * - {video_id} -> actual video ID
+ * - {fullname} -> customer's full name (personalization)
  */
-const SHOPPABLE_TEMPLATE_HTML = `<div  class="kpoint-embedded-video"
-
+const GREETINGS_TEMPLATE_HTML = `<div class="kpoint-embedded-video"
   data-video-host="{video_host}"
   data-samesite="true"
   data-kvideo-id="{video_id}"
   style="height: 100%; width: 100%"
   data-ar="16:9"
-  data-video-params= '{
+  data-video-params='{
     "resume": false,
     "search": false,
     "like": false,
-    "add-widgets": "utils,kpw_shoppable,fontloader",
-    "autoplay": true
+    "add-widgets": "utils,kpw_text,kpw_actionbutton,fontloader",
+    "autoplay": true,
+    "trk_package_id": "52yovfxjvcdm"
   }'
   data-personalization-info='{
-    "product_link": "https://cms-assets.bajajfinserv.in/is/image/bajajfinancestage/gcc-fd03f6e3-6639-4b74-aaa9-c61bd316efcd-1",
-    "product_image": "https://cms-assets.bajajfinserv.in/is/image/bajajfinance/bajaj-logo-sep-15?scl=1&fmt=png-alpha",
-    "product_title": "sdv",
-    "product_price": "sdv",
-    "product_strike_price": "sdfvfsg"
+    "fullname": "{fullname}"
   }'
   data-widgets-config='{
-    "kpw_shoppable": {
-        "list": [
-            {
-                "style": {
-                    "color": "",
-                    "background-color": "",
-                    "know-more-color": "",
-                    "font-family": "Rubik"
-                },
-                "button": {
-                    "text": "sf",
-                    "type": "link",
-                    "sec-text": "",
-                    "sec-color": "",
-                    "background-color": "",
-                    "color": ""
-                },
-                "product": {
-                    "link": "{product_link}",
-                    "image": "{product_image}",
-                    "title": "{product_title}",
-                    "price": "{product_price}",
-                    "strike_price": "{product_strike_price}",
-                    "description": "sdv",
-                    "discount": "sfd",
-                    "features": [
-"f"
- ]
-                },
-                "track": {
-                    "name": " sdv"
-                },
-                "id": " sdv"
-            }
-        ]
+    "kpw_text": {
+      "list": [{
+        "text": "Hi {fullname}, Happy {occasion}",
+        "style": {
+          "color": "#ffffff",
+          "background-color": "#FF6B00",
+          "font-family": "Rubik",
+          "font-size": "24px",
+          "border-radius": "8px",
+          "padding": "12px 24px"
+        },
+        "position": {
+          "top": "10%",
+          "left": "50%",
+          "transform": "translateX(-50%)"
+        }
+      }]
+    },
+    "kpw_actionbutton": {
+      "list": [{
+        "text": "Apply Now",
+        "link": "https://www.icicibank.com",
+        "style": {
+          "background-color": "#FF6B00",
+          "color": "#ffffff",
+          "font-family": "Rubik"
+        },
+        "position": {
+          "bottom": "15%",
+          "left": "50%",
+          "transform": "translateX(-50%)"
+        }
+      }]
     },
     "fontloader": {
-        "list": [
-            {
-                "name": "Rubik",
-                "google": {
-                    "styles": [
-                        "500"
-                    ]
-                }
-            }
-        ]
+      "list": [{
+        "name": "Rubik",
+        "google": {
+          "styles": ["400", "500", "700"]
+        }
+      }]
     }
-}'
+  }'
 ></div>
 <script
   type="text/javascript"
@@ -98,11 +89,11 @@ const SHOPPABLE_TEMPLATE_HTML = `<div  class="kpoint-embedded-video"
  */
 export const TEMPLATE_DEFINITIONS: TemplateDefinition[] = [
   {
-    id: "shoppable-v1",
-    name: "Shoppable Template",
-    description: "Add interactive product showcases to your videos",
-    category: "shoppable",
-    htmlTemplate: SHOPPABLE_TEMPLATE_HTML,
+    id: "52yovfxjvcdm",
+    name: "Greetings",
+    description: "Personalized greeting template with customer name and action button",
+    category: "greetings",
+    htmlTemplate: GREETINGS_TEMPLATE_HTML,
   },
   // More templates can be added here in the future
   // {

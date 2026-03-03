@@ -13,6 +13,7 @@ import { getClientSession } from "@/lib/utils/cookies";
 interface Video {
   id: string;
   title: string;
+  displayname: string;
   description?: string;
   thumbnail_url?: string;
   created_at?: string;
@@ -79,6 +80,7 @@ export default function VideosPage() {
       let videoList = mockVideos.map((mockVideo: any) => ({
         id: mockVideo.id,
         title: mockVideo.name,
+        displayname: mockVideo.displayname || mockVideo.name,
         description: mockVideo.description,
         thumbnail_url: mockVideo.images.thumb,
         created_at: mockVideo.time_created,

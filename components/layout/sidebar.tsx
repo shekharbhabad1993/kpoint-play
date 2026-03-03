@@ -73,16 +73,18 @@ export function Sidebar({ items, role, userName }: SidebarProps) {
         {/* Brand */}
         <div className="p-6 border-b border-gray-100">
           <Link
-            href={role === "admin" ? "/admin/dashboard" : "/partner/dashboard"}
+            href={role === "admin" ? "/admin/dashboard" : "/partner/templates"}
             className="flex items-center gap-3"
             onClick={closeMobileMenu}
           >
             <div className="w-9 h-9 rounded-xl bg-kpoint-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">K</span>
+              <span className="text-white font-bold text-sm">
+                {role === "partner" ? "B" : "K"}
+              </span>
             </div>
             <div>
               <span className="font-semibold text-gray-900 text-sm">
-                KPOINT Play
+                {role === "partner" ? "Banca Partner" : "KPOINT Play"}
               </span>
               <span className="block text-xs text-gray-400 capitalize">
                 {role} Console
