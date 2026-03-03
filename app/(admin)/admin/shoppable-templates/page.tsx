@@ -19,6 +19,7 @@ interface Video {
     embed_code_preview: string;
     state: string;
   };
+  [key: string]: unknown;
 }
 
 type TabType = "apply" | "view";
