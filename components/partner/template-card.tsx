@@ -86,7 +86,7 @@ export function TemplateCard({ template, onUse }: TemplateCardProps) {
             className="btn-primary w-full sm:w-auto text-sm flex items-center justify-center gap-2 mt-auto"
           >
             <Wand2 className="w-4 h-4" />
-            Share with User
+            Personalize and Share with Customer
           </button>
         </div>
       </div>

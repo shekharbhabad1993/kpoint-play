@@ -424,7 +424,7 @@ export const mockVideos: any[] = [
       "status": "ready",
       "liveEventFlag": false,
       "properties": {
-        "interactivity_packages": "[{\"time_last_published\":\"2026-02-22 15:53:34\",\"displayname\":\"Untitled\",\"time_last_update\":\"2026-02-22 15:53:34\",\"time_created\":\"2026-02-22 13:57:59\",\"id\":\"52eutbewxdcu\",\"state\":\"PUBLISHED\"}]",
+        "interactivity_packages": "[{\"time_last_published\":\"2026-02-22 15:53:34\",\"displayname\":\"Welcome\",\"time_last_update\":\"2026-02-22 15:53:34\",\"time_created\":\"2026-02-22 13:57:59\",\"id\":\"52eutbewxdcu\",\"state\":\"PUBLISHED\"}]",
         "upload_video_path": "upload.ap-southeast-1.kpoint/ktpl.kpoint.in/video/up840253/o_1jeofm9o91mha1bbnmg31ftueied/o_1jeofm9o91mha1bbnmg31ftueied.mp4",
         "stt.confidence": "1.0",
         "smart.scene.artifact.count": "3",
@@ -1416,7 +1416,57 @@ export interface MockPackage {
 export const mockPackages: MockPackage[] = [
   {
     id: "52eutbewxdcu",
-    name: "Untitled",
+    name: "personalized package for Icicic users",
+    description: "Interactive package for IL Hindi video",
+    video_id: "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
+    time_last_published: "2026-02-22 15:53:34",
+    time_last_update: "2026-02-22 15:53:34",
+    time_created: "2026-02-22 13:57:59",
+    state: "PUBLISHED",
+    fields: [],
+    configuration: {
+      interactivity_enabled: true,
+      auto_play: false,
+    },
+    widgetsConfig: {
+      kpw_text: {
+        list: [
+          {
+            text: "{first_name}",
+            track: { name: "{first_name}" },
+          },
+        ],
+      },
+    },
+  },
+   {
+    id: "52eutbewxdcu",
+    name: "personalized package for Icicic users - 2",
+    description: "Interactive package for IL Hindi video",
+    video_id: "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
+    time_last_published: "2026-02-22 15:53:34",
+    time_last_update: "2026-02-22 15:53:34",
+    time_created: "2026-02-22 13:57:59",
+    state: "PUBLISHED",
+    fields: [],
+    configuration: {
+      interactivity_enabled: true,
+      auto_play: false,
+    },
+    widgetsConfig: {
+      kpw_text: {
+        list: [
+          {
+            text: "{first_name}",
+            track: { name: "{first_name}" },
+          },
+        ],
+      },
+    },
+  },
+   {
+    id: "52eutbewxdcu",
+    name: "personalized package for Icicic users - 3",
     description: "Interactive package for IL Hindi video",
     video_id: "gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7",
     time_last_published: "2026-02-22 15:53:34",

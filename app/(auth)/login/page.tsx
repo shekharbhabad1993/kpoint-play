@@ -139,7 +139,7 @@ export default function LoginPage() {
                   }`}
                 >
                   <Users className="w-8 h-8 mb-2" />
-                  <span className="font-medium text-sm">Partner</span>
+                  <span className="font-medium text-sm">Banca Partner</span>
                   <span className="text-xs mt-1 text-gray-500">
                     Personalize & share
                   </span>

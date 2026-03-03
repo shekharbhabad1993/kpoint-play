@@ -157,7 +157,7 @@ export function PersonalizationModal({
       title={
         linkResult
           ? "Your Personalized Link"
-          : `Personalize: ${template?.package_name || "Template"}`
+          : "Personalize Your Video"
       }
       size="lg"
     >
@@ -267,7 +267,7 @@ export function PersonalizationModal({
               ) : (
                 <>
                   <Wand2 className="w-4 h-4" />
-                  Generate Play Link
+                  Generate Link
                 </>
               )}
             </button>
