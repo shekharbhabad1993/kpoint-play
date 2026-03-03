@@ -18,6 +18,7 @@ interface Video {
   created_at?: string;
   duration?: number;
   status?: string;
+  tags?: string[];
   interactivity_packages?: { id: string; name?: string }[];
   [key: string]: unknown;
 }
@@ -70,52 +71,35 @@ export default function VideosPage() {
     setLoading(true);
     setError(null);
     try {
+      // Always use mock data for now
+      console.log("📦 Using mock videos from mock-data.ts");
+      await simulateDelay(500);
+      const mockVideos = getMockVideos();
+
+      let videoList = mockVideos.map((mockVideo: any) => ({
+        id: mockVideo.id,
+        title: mockVideo.name,
+        description: mockVideo.description,
+        thumbnail_url: mockVideo.images.thumb,
+        created_at: mockVideo.time_created,
+        duration: mockVideo.duration,
+        status: mockVideo.status,
+        tags: mockVideo.tags || [],
+        interactivity_packages: mockVideo.interactivity_packages || [],
+      }));
+
+      // Filter by tag if selected
       if (tag) {
-        // Fetch from KPOINT API with tag filter
-        console.log(`🔍 Fetching videos with tag: ${tag}`);
-        const apiUrl = `https://ktpl.kpoint.com/api/v3/search?facet.tag=${tag}`;
-        console.log(`🌐 API URL: ${apiUrl}`);
-
-        const res = await fetch(apiUrl);
-        if (!res.ok) throw new Error("Failed to fetch videos");
-        const data = await res.json();
-
-        console.log("📦 API Response:", data);
-
-        // Map API response to Video interface
-        const videoList = (data.results || []).map((apiVideo: any) => ({
-          id: apiVideo.id,
-          title: apiVideo.name || apiVideo.title,
-          description: apiVideo.description,
-          thumbnail_url: apiVideo.images?.thumb || apiVideo.thumbnail_url,
-          created_at: apiVideo.time_created || apiVideo.created_at,
-          duration: apiVideo.duration,
-          status: apiVideo.status,
-          interactivity_packages: apiVideo.interactivity_packages || [],
-        }));
-
-        setVideos(videoList);
-        console.log(`✅ Loaded ${videoList.length} videos for tag: ${tag}`);
+        console.log(`🔍 Filtering mock videos by tag: ${tag}`);
+        videoList = videoList.filter((video: any) =>
+          video.tags?.includes(tag) || false
+        );
+        console.log(`✅ Filtered to ${videoList.length} videos with tag: ${tag}`);
       } else {
-        // Use mock data when no tag is selected
-        console.log("📦 Using mock videos from mock-data.ts");
-        await simulateDelay(500);
-        const mockVideos = getMockVideos();
-
-        const videoList = mockVideos.map((mockVideo: any) => ({
-          id: mockVideo.id,
-          title: mockVideo.name,
-          description: mockVideo.description,
-          thumbnail_url: mockVideo.images.thumb,
-          created_at: mockVideo.time_created,
-          duration: mockVideo.duration,
-          status: mockVideo.status,
-          interactivity_packages: mockVideo.interactivity_packages || [],
-        }));
-
-        setVideos(videoList);
         console.log(`✅ Loaded ${videoList.length} mock videos`);
       }
+
+      setVideos(videoList);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load videos");
     } finally {
