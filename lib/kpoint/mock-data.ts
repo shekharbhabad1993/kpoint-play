@@ -352,7 +352,7 @@ export const mockVideos: any[] = [
       "playCount": 146,
       "description": "",
       "images": {
-        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
+        "thumb": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-28497b0b-6e0d-41f9-8bc5-3f21d659e333/v5/i/16x9-thumb.jpg",
         "fallback": {
           "thumb": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
           "full": "https://ktpl.kpoint.com/media/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/media/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-full.jpg",
