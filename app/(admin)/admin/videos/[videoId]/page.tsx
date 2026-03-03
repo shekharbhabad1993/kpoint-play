@@ -203,12 +203,13 @@ export default function VideoDetailsPage() {
       >
         <button
           onClick={() => router.push("/admin/videos")}
-          className={`flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors ${
+          className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors ${
             publishComplete ? "animate-pulse-highlight border-kpoint-500 bg-kpoint-50" : ""
           }`}
         >
           <ArrowLeft className="w-4 h-4" />
-          Back to Videos
+          <span className="hidden sm:inline">Back to Videos</span>
+          <span className="sm:hidden">Back</span>
         </button>
       </Header>
 
@@ -223,11 +224,11 @@ export default function VideoDetailsPage() {
         onPublish={handlePublish}
       />
 
-      <div className="p-6 h-[calc(100vh-110px)] overflow-auto">
+      <div className="p-3 sm:p-6 h-[calc(100vh-110px)] overflow-auto">
         <div className="max-w-6xl mx-auto h-full flex flex-col items-center justify-center gap-4">
           {/* Video Player Container - Enlarged and Centered */}
-          <div className="w-full bg-white rounded-lg shadow-lg p-4">
-            <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden" id="kpoint-video-container" style={{ maxHeight: '57vh',marginLeft:'14vh' }}>
+          <div className="w-full bg-white rounded-lg shadow-lg p-2 sm:p-4">
+            <div className="aspect-video bg-gray-900 rounded-lg overflow-hidden" id="kpoint-video-container" style={{ maxHeight: '57vh' }}>
               {/* KPOINT Video Embed - Loaded via useEffect */}
             </div>
           </div>
@@ -236,26 +237,26 @@ export default function VideoDetailsPage() {
           {currentStep === 3 && (
             <button
               onClick={() => setTemplatesVideo(video)}
-              className="px-6 py-2 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow animate-pulse-highlight"
+              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow animate-pulse-highlight w-full sm:w-auto justify-center"
             >
               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold bg-kpoint-600 text-white">
                 3
               </div>
-              <span className="text-xs font-medium text-gray-900">Add Template</span>
-              <Palette className="w-3.5 h-3.5 text-kpoint-600" />
+              <span className="text-xs sm:text-sm font-medium text-gray-900">Add Template</span>
+              <Palette className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-kpoint-600" />
             </button>
           )}
 
           {currentStep === 4 && !publishComplete && (
             <button
               onClick={() => setPublishVideo(video)}
-              className="px-6 py-2 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow animate-pulse-highlight"
+              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow animate-pulse-highlight w-full sm:w-auto justify-center"
             >
               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold bg-kpoint-600 text-white">
                 4
               </div>
-              <span className="text-xs font-medium text-gray-900">Publish to Users</span>
-              <Share2 className="w-3.5 h-3.5 text-kpoint-600" />
+              <span className="text-xs sm:text-sm font-medium text-gray-900">Publish to Users</span>
+              <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-kpoint-600" />
             </button>
           )}
 
