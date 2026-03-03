@@ -1,8 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, ShoppingBag, Loader2, CheckCircle } from "lucide-react";
 import { TEMPLATE_DEFINITIONS } from "@/lib/kpoint/template-definitions";
+
+interface PartnerTemplate {
+  id: string;
+  name: string;
+  description?: string;
+  thumbnail_url?: string;
+  images?: { thumb?: string };
+}
 
 interface AddTemplateModalProps {
   video: {
@@ -12,6 +20,7 @@ interface AddTemplateModalProps {
   open: boolean;
   onClose: () => void;
   onSuccess: () => void;
+  userEmail?: string;
 }
 
 export function AddTemplateModal({
@@ -19,10 +28,59 @@ export function AddTemplateModal({
   open,
   onClose,
   onSuccess,
+  userEmail,
 }: AddTemplateModalProps) {
   const [applying, setApplying] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [partnerTemplates, setPartnerTemplates] = useState<PartnerTemplate[]>([]);
+  const [loadingTemplates, setLoadingTemplates] = useState(false);
+
+  // Extract partner from email (e.g., hdfcuser1@kpoint.com -> hdfc)
+  const getPartnerTag = (email?: string): string | null => {
+    if (!email) return null;
+    const match = email.match(/^(hdfc|icici|bom)/i);
+    return match ? match[1].toLowerCase() : null;
+  };
+
+  useEffect(() => {
+    if (open) {
+      console.log("🔍 AddTemplateModal opened with userEmail:", userEmail);
+      const partnerTag = getPartnerTag(userEmail);
+      console.log("🏷️ Extracted partner tag:", partnerTag);
+
+      if (partnerTag) {
+        fetchPartnerTemplates(partnerTag);
+      } else if (userEmail) {
+        console.log("⚠️ No partner tag found for email:", userEmail);
+      } else {
+        console.log("⚠️ No user email provided");
+      }
+    }
+  }, [open, userEmail]);
+
+  async function fetchPartnerTemplates(partnerTag: string) {
+    setLoadingTemplates(true);
+    setError(null);
+    try {
+      const apiUrl = `https://ktpl.kpoint.com/api/v3/search?facet.tag=${partnerTag}`;
+      console.log("🌐 Fetching partner templates from:", apiUrl);
+
+      const res = await fetch(apiUrl);
+      if (!res.ok) throw new Error("Failed to fetch partner templates");
+      const data = await res.json();
+
+      console.log("✅ Partner templates response:", data);
+      console.log(`📊 Found ${data.results?.length || 0} partner templates`);
+
+      setPartnerTemplates(data.results || []);
+    } catch (err: any) {
+      console.error("❌ Error fetching partner templates:", err);
+      setError(err.message || "Failed to load partner templates");
+    } finally {
+      setLoadingTemplates(false);
+    }
+  }
 
   async function handleSelectTemplate(templateId: string) {
     if (!video) return;
@@ -101,6 +159,10 @@ export function AddTemplateModal({
               </h3>
               <p className="text-gray-500">Refreshing templates...</p>
             </div>
+          ) : loadingTemplates ? (
+            <div className="flex items-center justify-center py-12">
+              <Loader2 className="w-8 h-8 text-kpoint-600 animate-spin" />
+            </div>
           ) : (
             <>
               {error && (
@@ -109,36 +171,85 @@ export function AddTemplateModal({
                 </div>
               )}
 
-              <div className="grid grid-cols-1 gap-4">
-                {TEMPLATE_DEFINITIONS.map((template) => (
-                  <button
-                    key={template.id}
-                    onClick={() => handleSelectTemplate(template.id)}
-                    disabled={applying}
-                    className="flex items-start gap-4 p-5 rounded-lg border-2 border-gray-200 hover:border-kpoint-500 hover:bg-kpoint-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-left"
-                  >
-                    <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-kpoint-100 flex items-center justify-center text-kpoint-600">
-                      {getTemplateIcon(template.category)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-medium text-gray-900 mb-1">
-                        {template.name}
-                      </h3>
-                      <p className="text-sm text-gray-500">
-                        {template.description}
-                      </p>
-                      <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 capitalize">
-                        {template.category}
-                      </span>
-                    </div>
-                    {applying && (
-                      <Loader2 className="w-5 h-5 text-kpoint-600 animate-spin flex-shrink-0" />
-                    )}
-                  </button>
-                ))}
-              </div>
+              {/* Show partner templates if available, otherwise show default templates */}
+              {partnerTemplates.length > 0 ? (
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="mb-4">
+                    <h3 className="text-sm font-medium text-gray-700">
+                      Partner Templates ({getPartnerTag(userEmail)?.toUpperCase()})
+                    </h3>
+                  </div>
+                  {partnerTemplates.map((template) => (
+                    <button
+                      key={template.id}
+                      onClick={() => handleSelectTemplate(template.id)}
+                      disabled={applying}
+                      className="flex items-start gap-4 p-5 rounded-lg border-2 border-gray-200 hover:border-kpoint-500 hover:bg-kpoint-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-left"
+                    >
+                      {template.images?.thumb || template.thumbnail_url ? (
+                        <img
+                          src={template.images?.thumb || template.thumbnail_url}
+                          alt={template.name}
+                          className="flex-shrink-0 w-16 h-16 rounded-lg object-cover"
+                        />
+                      ) : (
+                        <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-kpoint-100 flex items-center justify-center text-kpoint-600">
+                          <ShoppingBag className="w-8 h-8" />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium text-gray-900 mb-1">
+                          {template.name}
+                        </h3>
+                        {template.description && (
+                          <p className="text-sm text-gray-500">
+                            {template.description}
+                          </p>
+                        )}
+                      </div>
+                      {applying && (
+                        <Loader2 className="w-5 h-5 text-kpoint-600 animate-spin flex-shrink-0" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 gap-4">
+                  <div className="mb-4">
+                    <h3 className="text-sm font-medium text-gray-700">
+                      Default Templates
+                    </h3>
+                  </div>
+                  {TEMPLATE_DEFINITIONS.map((template) => (
+                    <button
+                      key={template.id}
+                      onClick={() => handleSelectTemplate(template.id)}
+                      disabled={applying}
+                      className="flex items-start gap-4 p-5 rounded-lg border-2 border-gray-200 hover:border-kpoint-500 hover:bg-kpoint-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed text-left"
+                    >
+                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-kpoint-100 flex items-center justify-center text-kpoint-600">
+                        {getTemplateIcon(template.category)}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium text-gray-900 mb-1">
+                          {template.name}
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                          {template.description}
+                        </p>
+                        <span className="inline-block mt-2 text-xs px-2 py-1 rounded-full bg-gray-100 text-gray-600 capitalize">
+                          {template.category}
+                        </span>
+                      </div>
+                      {applying && (
+                        <Loader2 className="w-5 h-5 text-kpoint-600 animate-spin flex-shrink-0" />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
 
-              {TEMPLATE_DEFINITIONS.length === 0 && (
+              {partnerTemplates.length === 0 && TEMPLATE_DEFINITIONS.length === 0 && !loadingTemplates && (
                 <div className="text-center py-12 text-gray-500">
                   <p>No templates available</p>
                 </div>

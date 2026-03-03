@@ -101,6 +101,9 @@ export function ShareVideoModal({
       }
       return [...prev, item];
     });
+    // Close search results after selection
+    setShowResults(false);
+    setSearchQuery("");
   }
 
   function isSelected(item: UserGroupResult): boolean {
@@ -144,75 +147,75 @@ export function ShareVideoModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+      <div className="bg-white rounded-lg shadow-xl max-w-lg w-full max-h-[85vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+        <div className="px-4 py-3 border-b border-gray-200 flex items-center justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-              <Users className="w-5 h-5 text-kpoint-600" />
+            <h2 className="text-base font-semibold text-gray-900 flex items-center gap-2">
+              <Users className="w-4 h-4 text-kpoint-600" />
               Share Video
             </h2>
-            <p className="text-sm text-gray-500 mt-1">{video.title}</p>
+            <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{video.title}</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors"
           >
-            <X className="w-5 h-5 text-gray-500" />
+            <X className="w-4 h-4 text-gray-500" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-4">
           {success ? (
-            <div className="text-center py-12">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Check className="w-8 h-8 text-green-600" />
+            <div className="text-center py-8">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <Check className="w-6 h-6 text-green-600" />
               </div>
-              <p className="text-lg font-medium text-gray-900">
+              <p className="text-base font-medium text-gray-900">
                 Video shared successfully!
               </p>
             </div>
           ) : (
             <>
               {/* Search Box */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+              <div className="mb-4">
+                <label className="block text-xs font-medium text-gray-700 mb-1.5">
                   Search Users & Groups
                 </label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                  <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Type to search..."
-                    className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-kpoint-500 focus:border-transparent"
+                    className="w-full pl-9 pr-4 py-1.5 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-kpoint-500 focus:border-transparent"
                   />
                   {searching && (
-                    <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-kpoint-600 animate-spin" />
+                    <Loader2 className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-kpoint-600 animate-spin" />
                   )}
                 </div>
 
                 {/* Search Results Dropdown */}
                 {showResults && searchResults.length > 0 && (
-                  <div className="mt-2 border border-gray-200 rounded-lg shadow-lg bg-white max-h-48 overflow-y-auto">
+                  <div className="mt-1.5 border border-gray-200 rounded-lg shadow-lg bg-white max-h-40 overflow-y-auto">
                     {searchResults.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => toggleSelection(item)}
-                        className={`w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
+                        className={`w-full px-3 py-2 flex items-center justify-between hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0 ${
                           isSelected(item) ? "bg-kpoint-50" : ""
                         }`}
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           {item.type === "user" ? (
-                            <UserPlus className="w-5 h-5 text-blue-600" />
+                            <UserPlus className="w-4 h-4 text-blue-600" />
                           ) : (
-                            <Users className="w-5 h-5 text-purple-600" />
+                            <Users className="w-4 h-4 text-purple-600" />
                           )}
                           <div className="text-left">
-                            <div className="font-medium text-gray-900">
+                            <div className="font-medium text-gray-900 text-sm">
                               {item.displayname || item.name}
                             </div>
                             {item.email && (
@@ -223,7 +226,7 @@ export function ShareVideoModal({
                           </div>
                         </div>
                         {isSelected(item) && (
-                          <Check className="w-5 h-5 text-kpoint-600" />
+                          <Check className="w-4 h-4 text-kpoint-600" />
                         )}
                       </button>
                     ))}
@@ -231,7 +234,7 @@ export function ShareVideoModal({
                 )}
 
                 {showResults && searchResults.length === 0 && !searching && (
-                  <div className="mt-2 p-4 text-center text-gray-500 border border-gray-200 rounded-lg">
+                  <div className="mt-1.5 p-3 text-center text-sm text-gray-500 border border-gray-200 rounded-lg">
                     No users or groups found
                   </div>
                 )}
@@ -239,24 +242,24 @@ export function ShareVideoModal({
 
               {/* Selected Items */}
               {selectedItems.length > 0 && (
-                <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                <div className="mb-4">
+                  <label className="block text-xs font-medium text-gray-700 mb-1.5">
                     Selected ({selectedItems.length})
                   </label>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     {selectedItems.map((item) => (
                       <div
                         key={item.id}
-                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200"
+                        className="flex items-center justify-between p-2 bg-gray-50 rounded-lg border border-gray-200"
                       >
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           {item.type === "user" ? (
-                            <UserPlus className="w-4 h-4 text-blue-600" />
+                            <UserPlus className="w-3.5 h-3.5 text-blue-600" />
                           ) : (
-                            <Users className="w-4 h-4 text-purple-600" />
+                            <Users className="w-3.5 h-3.5 text-purple-600" />
                           )}
                           <div>
-                            <div className="font-medium text-gray-900 text-sm">
+                            <div className="font-medium text-gray-900 text-xs">
                               {item.displayname || item.name}
                             </div>
                             <div className="text-xs text-gray-500 capitalize">
@@ -268,7 +271,7 @@ export function ShareVideoModal({
                           onClick={() => removeSelected(item)}
                           className="p-1 hover:bg-gray-200 rounded transition-colors"
                         >
-                          <X className="w-4 h-4 text-gray-500" />
+                          <X className="w-3.5 h-3.5 text-gray-500" />
                         </button>
                       </div>
                     ))}
@@ -277,16 +280,16 @@ export function ShareVideoModal({
               )}
 
               {/* Send Email Option */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={sendEmail}
                     onChange={(e) => setSendEmail(e.target.checked)}
-                    className="w-4 h-4 text-kpoint-600 border-gray-300 rounded focus:ring-kpoint-500"
+                    className="w-3.5 h-3.5 text-kpoint-600 border-gray-300 rounded focus:ring-kpoint-500"
                   />
-                  <Mail className="w-4 h-4 text-gray-600" />
-                  <span className="text-sm text-gray-700">
+                  <Mail className="w-3.5 h-3.5 text-gray-600" />
+                  <span className="text-xs text-gray-700">
                     Send email notification to shared users
                   </span>
                 </label>
@@ -294,7 +297,7 @@ export function ShareVideoModal({
 
               {/* Error */}
               {error && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                <div className="mb-3 p-2 bg-red-50 border border-red-200 rounded-lg text-red-600 text-xs">
                   {error}
                 </div>
               )}
@@ -304,17 +307,17 @@ export function ShareVideoModal({
 
         {/* Footer */}
         {!success && (
-          <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-end gap-3">
-            <button onClick={onClose} className="btn-secondary">
+          <div className="px-4 py-3 border-t border-gray-200 flex items-center justify-end gap-2">
+            <button onClick={onClose} className="btn-secondary text-xs py-1.5 px-3">
               Cancel
             </button>
             <button
               onClick={handleShare}
               disabled={selectedItems.length === 0 || sharing}
-              className="btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="btn-primary text-xs py-1.5 px-3 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
             >
-              {sharing && <Loader2 className="w-4 h-4 animate-spin" />}
-              Share with {selectedItems.length} {selectedItems.length === 1 ? "member" : "members"}
+              {sharing && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+              Share with {selectedItems.length}
             </button>
           </div>
         )}

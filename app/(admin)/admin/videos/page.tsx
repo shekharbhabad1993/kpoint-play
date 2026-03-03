@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/layout/header";
 import { LoadingSpinner } from "@/components/shared/loading-spinner";
 import { ErrorState } from "@/components/shared/error-state";
 import { EmptyState } from "@/components/shared/empty-state";
 import { VideoCard } from "@/components/admin/video-card";
-import { TemplatesModal } from "@/components/admin/templates-modal";
-import { AddTemplateModal } from "@/components/admin/add-template-modal";
-import { ShareVideoModal } from "@/components/admin/share-video-modal";
 import { getMockVideos, simulateDelay } from "@/lib/kpoint/mock-data";
+import { getClientSession } from "@/lib/utils/cookies";
 
 interface Video {
   id: string;
@@ -23,45 +22,100 @@ interface Video {
   [key: string]: unknown;
 }
 
+const VIDEO_TAGS = [
+  { label: "All Videos", value: "" },
+  { label: "Birthday", value: "birthday" },
+  { label: "Housewives", value: "housewives" },
+  { label: "Working Professionals", value: "workingprofessionals" },
+  { label: "New Year", value: "newyear" },
+  { label: "Special Offers", value: "specialoffers" },
+];
+
+// Extract partner from email (e.g., hdfcuser1@kpoint.com -> hdfc)
+function getPartnerTag(email?: string): string | null {
+  if (!email) return null;
+  const match = email.match(/^(hdfc|icici|bom)/i);
+  return match ? match[1].toLowerCase() : null;
+}
+
 export default function VideosPage() {
+  const router = useRouter();
   const [videos, setVideos] = useState<Video[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [selectedTag, setSelectedTag] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [autoSelectedTag, setAutoSelectedTag] = useState<string | null>(null);
 
-  // Templates Modal
-  const [templatesVideo, setTemplatesVideo] = useState<Video | null>(null);
+  // Get user email and auto-select partner tag on mount
+  useEffect(() => {
+    const session = getClientSession();
+    const email = session?.email || "";
+    setUserEmail(email);
 
-  // Add Template Modal
-  const [addTemplateVideo, setAddTemplateVideo] = useState<Video | null>(null);
+    console.log("👤 Logged in user email:", email);
 
-  // Share Video Modal
-  const [shareVideo, setShareVideo] = useState<Video | null>(null);
+    if (email) {
+      const partnerTag = getPartnerTag(email);
+      console.log("🏷️ Auto-detected partner tag:", partnerTag);
 
-  const fetchVideos = useCallback(async () => {
+      if (partnerTag) {
+        setAutoSelectedTag(partnerTag);
+        setSelectedTag(partnerTag);
+      }
+    }
+  }, []);
+
+  const fetchVideos = useCallback(async (tag: string = "") => {
     setLoading(true);
     setError(null);
     try {
-      console.log("📦 Using mock videos from mock-data.ts");
-      // Simulate API delay for realistic UX
-      await simulateDelay(500);
+      if (tag) {
+        // Fetch from KPOINT API with tag filter
+        console.log(`🔍 Fetching videos with tag: ${tag}`);
+        const apiUrl = `https://ktpl.kpoint.com/api/v3/search?facet.tag=${tag}`;
+        console.log(`🌐 API URL: ${apiUrl}`);
 
-      // Get mock videos instead of fetching from API
-      const mockVideos = getMockVideos();
+        const res = await fetch(apiUrl);
+        if (!res.ok) throw new Error("Failed to fetch videos");
+        const data = await res.json();
 
-      // Map mock video structure to Video interface
-      const videoList = mockVideos.map((mockVideo) => ({
-        id: mockVideo.id,
-        title: mockVideo.title,
-        description: mockVideo.description,
-        thumbnail_url: mockVideo.images.thumb,
-        created_at: mockVideo.time_created,
-        duration: mockVideo.duration,
-        status: mockVideo.status,
-        interactivity_packages: mockVideo.interactivity_packages || [],
-      }));
+        console.log("📦 API Response:", data);
 
-      setVideos(videoList);
-      console.log(`✅ Loaded ${videoList.length} mock videos`);
+        // Map API response to Video interface
+        const videoList = (data.results || []).map((apiVideo: any) => ({
+          id: apiVideo.id,
+          title: apiVideo.name || apiVideo.title,
+          description: apiVideo.description,
+          thumbnail_url: apiVideo.images?.thumb || apiVideo.thumbnail_url,
+          created_at: apiVideo.time_created || apiVideo.created_at,
+          duration: apiVideo.duration,
+          status: apiVideo.status,
+          interactivity_packages: apiVideo.interactivity_packages || [],
+        }));
+
+        setVideos(videoList);
+        console.log(`✅ Loaded ${videoList.length} videos for tag: ${tag}`);
+      } else {
+        // Use mock data when no tag is selected
+        console.log("📦 Using mock videos from mock-data.ts");
+        await simulateDelay(500);
+        const mockVideos = getMockVideos();
+
+        const videoList = mockVideos.map((mockVideo: any) => ({
+          id: mockVideo.id,
+          title: mockVideo.name,
+          description: mockVideo.description,
+          thumbnail_url: mockVideo.images.thumb,
+          created_at: mockVideo.time_created,
+          duration: mockVideo.duration,
+          status: mockVideo.status,
+          interactivity_packages: mockVideo.interactivity_packages || [],
+        }));
+
+        setVideos(videoList);
+        console.log(`✅ Loaded ${videoList.length} mock videos`);
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load videos");
     } finally {
@@ -70,16 +124,49 @@ export default function VideosPage() {
   }, []);
 
   useEffect(() => {
-    fetchVideos();
-  }, [fetchVideos]);
+    fetchVideos(selectedTag);
+  }, [fetchVideos, selectedTag]);
+
+  const handleTagChange = (tag: string) => {
+    setSelectedTag(tag);
+  };
+
+  // Navigate to video details page
+  const handleVideoClick = (videoId: string) => {
+    router.push(`/admin/videos/${videoId}`);
+  };
 
   return (
     <>
-      <Header
-        title="Videos"
-        subtitle="Manage your KPOINT video library"
-      />
-      <div className="p-6">
+      <Header title="Videos" subtitle="Manage your KPOINT video library" />
+
+      {/* Tag Filters */}
+      <div className="px-6 pt-4 pb-2 bg-white border-b border-gray-200">
+        <div className="flex items-center gap-4 mb-2">
+          <div className="flex flex-wrap gap-2">
+            {VIDEO_TAGS.map((tag) => (
+              <button
+                key={tag.value}
+                onClick={() => handleTagChange(tag.value)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  selectedTag === tag.value
+                    ? "bg-kpoint-600 text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                }`}
+              >
+                {tag.label}
+              </button>
+            ))}
+          </div>
+        </div>
+        {autoSelectedTag && (
+          <p className="text-xs text-gray-500">
+            📧 Logged in as: <span className="font-medium">{userEmail}</span> - Showing <span className="font-medium text-kpoint-600">{autoSelectedTag.toUpperCase()}</span> videos
+          </p>
+        )}
+      </div>
+
+      <div className="p-4">
         {loading ? (
           <LoadingSpinner />
         ) : error ? (
@@ -90,57 +177,17 @@ export default function VideosPage() {
             description="Videos will appear here once they're available in your KPOINT account."
           />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-3">
             {videos.map((video) => (
               <VideoCard
                 key={video.id}
                 video={video}
-                onViewTemplates={() => setTemplatesVideo(video)}
-                onShare={() => setShareVideo(video)}
+                onClick={() => handleVideoClick(video.id)}
               />
             ))}
           </div>
         )}
       </div>
-
-      {/* Templates Modal */}
-      <TemplatesModal
-        video={templatesVideo}
-        open={!!templatesVideo}
-        onClose={() => setTemplatesVideo(null)}
-        onAddTemplate={() => {
-          setAddTemplateVideo(templatesVideo);
-        }}
-      />
-
-      {/* Add Template Modal */}
-      <AddTemplateModal
-        video={addTemplateVideo}
-        open={!!addTemplateVideo}
-        onClose={() => setAddTemplateVideo(null)}
-        onSuccess={async () => {
-          setAddTemplateVideo(null);
-
-          // Wait for KPOINT API to update (1 second delay)
-          await new Promise(resolve => setTimeout(resolve, 1000));
-
-          // Force refresh templates modal with updated data
-          if (templatesVideo) {
-            // Trigger re-fetch by changing the video object reference
-            setTemplatesVideo({ ...templatesVideo, _refreshKey: Date.now() } as any);
-          }
-        }}
-      />
-
-      {/* Share Video Modal */}
-      <ShareVideoModal
-        video={shareVideo}
-        open={!!shareVideo}
-        onClose={() => setShareVideo(null)}
-        onSuccess={() => {
-          console.log("✅ Video shared successfully");
-        }}
-      />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getSession } from "@/lib/utils/cookies";
+import { getSession } from "@/lib/utils/server-cookies";
 
 export async function GET() {
   const session = getSession();

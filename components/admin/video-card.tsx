@@ -1,6 +1,6 @@
 "use client";
 
-import { Video, Package, Calendar, Share2 } from "lucide-react";
+import { Video, Package, Calendar } from "lucide-react";
 
 interface VideoCardProps {
   video: {
@@ -13,8 +13,7 @@ interface VideoCardProps {
     interactivity_packages?: { id: string; name?: string }[];
     [key: string]: unknown;
   };
-  onViewTemplates: () => void;
-  onShare: () => void;
+  onClick: () => void;
 }
 
 function formatDate(dateStr?: string): string {
@@ -37,11 +36,14 @@ function formatDuration(seconds?: number): string {
   return `${mins}:${secs.toString().padStart(2, "0")}`;
 }
 
-export function VideoCard({ video, onViewTemplates, onShare }: VideoCardProps) {
+export function VideoCard({ video, onClick }: VideoCardProps) {
   const packageCount = video.interactivity_packages?.length || 0;
 
   return (
-    <div className="card p-0 overflow-hidden hover:shadow-md transition-shadow duration-200">
+    <div
+      onClick={onClick}
+      className="card p-0 overflow-hidden hover:shadow-md transition-shadow duration-200 cursor-pointer"
+    >
       {/* Thumbnail */}
       <div className="aspect-video bg-gray-100 relative">
         {video.thumbnail_url ? (
@@ -52,29 +54,29 @@ export function VideoCard({ video, onViewTemplates, onShare }: VideoCardProps) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <Video className="w-12 h-12 text-gray-300" />
+            <Video className="w-10 h-10 text-gray-300" />
           </div>
         )}
         {video.duration && (
-          <span className="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-0.5 rounded">
+          <span className="absolute bottom-1.5 right-1.5 bg-black/70 text-white text-xs px-1.5 py-0.5 rounded">
             {formatDuration(video.duration)}
           </span>
         )}
       </div>
 
       {/* Content */}
-      <div className="p-4">
-        <h3 className="font-medium text-gray-900 text-sm line-clamp-2 mb-1">
+      <div className="p-2.5">
+        <h3 className="font-medium text-gray-900 text-xs line-clamp-1 mb-1">
           {video.title || "Untitled Video"}
         </h3>
 
         {video.description && (
-          <p className="text-xs text-gray-500 line-clamp-2 mb-3">
+          <p className="text-xs text-gray-500 line-clamp-1 mb-2">
             {video.description}
           </p>
         )}
 
-        <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+        <div className="flex items-center gap-3 text-xs text-gray-400 mb-2">
           <span className="flex items-center gap-1">
             <Calendar className="w-3 h-3" />
             {formatDate(video.created_at)}
@@ -82,24 +84,14 @@ export function VideoCard({ video, onViewTemplates, onShare }: VideoCardProps) {
           {packageCount > 0 && (
             <span className="flex items-center gap-1">
               <Package className="w-3 h-3" />
-              {packageCount} template{packageCount !== 1 ? "s" : ""}
+              {packageCount}
             </span>
           )}
         </div>
 
         <div className="flex gap-2">
-          <button
-            onClick={onViewTemplates}
-            className="btn-primary flex-1 text-sm py-2"
-          >
-            View Templates
-          </button>
-          <button
-            onClick={onShare}
-            className="btn-secondary px-3 py-2 flex items-center justify-center"
-            title="Share video"
-          >
-            <Share2 className="w-4 h-4" />
+          <button className="btn-primary flex-1 text-xs py-1.5">
+            Publish Template
           </button>
         </div>
       </div>

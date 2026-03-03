@@ -57,7 +57,7 @@ export async function PUT(
 
     // Create membershipData as a JSON string (KPOINT API requirement)
     const membershipData = JSON.stringify({
-      mail_flag: sendEmail ? 1 : 0,
+      mail_flag:  true,
       users,
       groups,
     });
@@ -65,18 +65,25 @@ export async function PUT(
     const payload = {
       visibility: "MEMBERS",
       isLiveEvent: false,
-      mail_flag: false,
+      mail_flag: true,
       membershipData, // Send as JSON string
-      published_flag: true,
+      //published_flag: false,
       ctx: "quickshoot",
     };
 
     console.log(`🚀 Calling KPOINT API: PUT /api/v3/videos/${videoId}`);
     console.log(`📦 Payload:`, JSON.stringify(payload, null, 2));
 
-    await kpointClient.put(path, payload);
-
-    console.log(`✅ Successfully shared video ${videoId}`);
+    try {
+      const response = await kpointClient.put(path, payload);
+      console.log(`✅ Successfully shared video ${videoId}`);
+      console.log(`📥 KPOINT Response:`, response);
+    } catch (apiError: any) {
+      console.error(`❌ KPOINT API Error:`, apiError);
+      console.error(`❌ Error status:`, apiError.status);
+      console.error(`❌ Error body:`, apiError.body);
+      throw apiError;
+    }
 
     return NextResponse.json({
       success: true,

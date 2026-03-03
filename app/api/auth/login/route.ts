@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   createSessionCookieValue,
   SESSION_COOKIE_OPTIONS,
-  SessionUser,
-  UserRole,
-} from "@/lib/utils/cookies";
+} from "@/lib/utils/server-cookies";
+import { SessionUser, UserRole } from "@/lib/utils/cookies";
 
 export async function POST(request: NextRequest) {
   try {
