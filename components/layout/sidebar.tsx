@@ -152,11 +152,6 @@ export const adminSidebarItems: SidebarItem[] = [
     icon: <Video className="w-4 h-4" />,
   },
   {
-    label: "Templates",
-    href: "/admin/templates",
-    icon: <FileText className="w-4 h-4" />,
-  },
-  {
     label: "Upload",
     href: "/admin/upload",
     icon: <Upload className="w-4 h-4" />,
