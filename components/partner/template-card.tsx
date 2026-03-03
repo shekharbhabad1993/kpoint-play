@@ -18,31 +18,29 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template, onUse }: TemplateCardProps) {
   return (
-    <div className="card hover:shadow-md transition-shadow duration-200">
-      {/* One per row layout with thumbnail */}
-      <div className="flex flex-col sm:flex-row gap-4">
-        {/* Thumbnail */}
-        <div className="flex-shrink-0">
-          {template.thumbnail_url ? (
-            <div className="relative w-full sm:w-48 h-32 bg-gray-100 rounded-lg overflow-hidden">
-              <Image
-                src={template.thumbnail_url}
-                alt={template.package_name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 192px"
-                unoptimized
-              />
-            </div>
-          ) : (
-            <div className="w-full sm:w-48 h-32 bg-gray-100 rounded-lg flex items-center justify-center">
-              <Video className="w-12 h-12 text-gray-400" />
-            </div>
-          )}
-        </div>
+    <div className="card hover:shadow-md transition-shadow duration-200 flex flex-col h-full">
+      {/* Thumbnail */}
+      <div className="flex-shrink-0">
+        {template.thumbnail_url ? (
+          <div className="relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden">
+            <Image
+              src={template.thumbnail_url}
+              alt={template.package_name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              unoptimized
+            />
+          </div>
+        ) : (
+          <div className="w-full aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
+            <Video className="w-12 h-12 text-gray-400" />
+          </div>
+        )}
+      </div>
 
-        {/* Content */}
-        <div className="flex-1 min-w-0 flex flex-col">
+      {/* Content */}
+      <div className="flex-1 flex flex-col pt-4">
           {/* Header */}
           <div className="flex items-start gap-3 mb-3">
             <div className="w-10 h-10 rounded-xl bg-kpoint-50 flex items-center justify-center flex-shrink-0">
@@ -83,13 +81,12 @@ export function TemplateCard({ template, onUse }: TemplateCardProps) {
           {/* Action Button */}
           <button
             onClick={onUse}
-            className="btn-primary w-full sm:w-auto text-sm flex items-center justify-center gap-2 mt-auto"
+            className="btn-primary w-full text-sm flex items-center justify-center gap-2 mt-auto"
           >
             <Wand2 className="w-4 h-4" />
             Personalize and Share with Customer
           </button>
         </div>
-      </div>
     </div>
   );
 }
