@@ -121,7 +121,7 @@ export function TemplatesModal({
                 <div className="text-center py-8 text-gray-500">
                   <Package className="w-12 h-12 mx-auto mb-3 text-gray-300" />
                   <p>No templates applied yet</p>
-                  <p className="text-sm">Click "Add Template" to get started</p>
+                  <p className="text-sm">Click &quot;Add Template&quot; to get started</p>
                 </div>
               ) : (
                 <div className="space-y-3">
