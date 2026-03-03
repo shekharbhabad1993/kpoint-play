@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { X, Plus, Package, Calendar, Loader2 } from "lucide-react";
 
 interface TemplateInfo {
@@ -32,15 +32,10 @@ export function TemplatesModal({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (open && video) {
-      // Force refresh when video object changes (including _refreshKey)
-      const shouldForceRefresh = (video as any)?._refreshKey !== undefined;
-      fetchTemplates(shouldForceRefresh);
-    }
-  }, [open, video, (video as any)?._refreshKey]);
+  // Extract complex expression to a separate variable
+  const refreshKey = (video as any)?._refreshKey;
 
-  async function fetchTemplates(forceRefresh = false) {
+  const fetchTemplates = useCallback(async (forceRefresh = false) => {
     if (!video) return;
 
     setLoading(true);
@@ -57,7 +52,15 @@ export function TemplatesModal({
     } finally {
       setLoading(false);
     }
-  }
+  }, [video]);
+
+  useEffect(() => {
+    if (open && video) {
+      // Force refresh when video object changes (including _refreshKey)
+      const shouldForceRefresh = refreshKey !== undefined;
+      fetchTemplates(shouldForceRefresh);
+    }
+  }, [open, video, refreshKey, fetchTemplates]);
 
   function formatDate(dateStr: string): string {
     try {

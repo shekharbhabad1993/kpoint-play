@@ -2,7 +2,7 @@
 
 import { FileText, Video, Users, User } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 interface AdminTemplateCardProps {
   template: {
@@ -29,11 +29,7 @@ export function AdminTemplateCard({
 }: AdminTemplateCardProps) {
   const [assignments, setAssignments] = useState<AssignmentInfo | null>(null);
 
-  useEffect(() => {
-    fetchAssignments();
-  }, [template.id]);
-
-  async function fetchAssignments() {
+  const fetchAssignments = useCallback(async () => {
     try {
       const res = await fetch(
         `/api/kpoint/admin/templates/${template.id}/assignments`
@@ -45,7 +41,11 @@ export function AdminTemplateCard({
     } catch (err) {
       console.error("Failed to fetch assignments", err);
     }
-  }
+  }, [template.id]);
+
+  useEffect(() => {
+    fetchAssignments();
+  }, [fetchAssignments]);
 
   const totalAssigned =
     (assignments?.users.length || 0) + (assignments?.groups.length || 0);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Modal } from "@/components/shared/modal";
 import { PlayLinkResult } from "./play-link-result";
@@ -48,14 +48,7 @@ export function PersonalizationModal({
     formState: { errors },
   } = useForm();
 
-  // Fetch dynamic fields when modal opens
-  useEffect(() => {
-    if (open && template) {
-      fetchDynamicFields();
-    }
-  }, [open, template]);
-
-  async function fetchDynamicFields() {
+  const fetchDynamicFields = useCallback(async () => {
     if (!template) return;
 
     setLoadingFields(true);
@@ -84,7 +77,14 @@ export function PersonalizationModal({
     } finally {
       setLoadingFields(false);
     }
-  }
+  }, [template]);
+
+  // Fetch dynamic fields when modal opens
+  useEffect(() => {
+    if (open && template) {
+      fetchDynamicFields();
+    }
+  }, [open, template, fetchDynamicFields]);
 
   // Use dynamic fields if available, otherwise use template fields or defaults
   const fields =

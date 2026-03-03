@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { X, Users, User, Check } from "lucide-react";
 
 interface PublishTemplateModalProps {
@@ -41,13 +41,7 @@ export function PublishTemplateModal({
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    if (open) {
-      fetchData();
-    }
-  }, [open, template?.id]);
-
-  async function fetchData() {
+  const fetchData = useCallback(async () => {
     if (!template) return;
 
     setLoading(true);
@@ -79,7 +73,13 @@ export function PublishTemplateModal({
     } finally {
       setLoading(false);
     }
-  }
+  }, [template]);
+
+  useEffect(() => {
+    if (open) {
+      fetchData();
+    }
+  }, [open, fetchData]);
 
   async function handleSave() {
     if (!template) return;

@@ -265,7 +265,7 @@ export default function VideoDetailsPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <span>Journey Complete! Click "Back to Videos" to continue.</span>
+              <span>Journey Complete! Click &quot;Back to Videos&quot; to continue.</span>
             </div>
           )}
         </div>
