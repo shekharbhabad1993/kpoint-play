@@ -18,11 +18,11 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template, onUse }: TemplateCardProps) {
   return (
-    <div className="card hover:shadow-md transition-shadow duration-200 flex flex-col h-full p-3">
-      {/* Thumbnail - vertical crop of horizontal image */}
+    <div className="card hover:shadow-md transition-shadow duration-200 flex flex-col h-full p-2">
+      {/* Thumbnail - vertical portrait */}
       <div className="flex-shrink-0 mb-2">
         {template.thumbnail_url ? (
-          <div className="relative w-full aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative w-full aspect-[2/3] bg-gray-100 rounded overflow-hidden">
             <Image
               src={template.thumbnail_url}
               alt={template.package_name}
@@ -33,8 +33,8 @@ export function TemplateCard({ template, onUse }: TemplateCardProps) {
             />
           </div>
         ) : (
-          <div className="w-full aspect-[3/4] bg-gray-100 rounded-lg flex items-center justify-center">
-            <Video className="w-8 h-8 text-gray-400" />
+          <div className="w-full aspect-[2/3] bg-gray-100 rounded flex items-center justify-center">
+            <Video className="w-6 h-6 text-gray-400" />
           </div>
         )}
       </div>

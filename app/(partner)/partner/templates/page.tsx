@@ -183,7 +183,7 @@ export default function PartnerTemplatesPage() {
             description="Templates published to you will appear here. Contact your admin to get started."
           />
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[34rem] max-w-7xl">
             {templates.map((template) => (
               <TemplateCard
                 key={template.id || template.package_id}
