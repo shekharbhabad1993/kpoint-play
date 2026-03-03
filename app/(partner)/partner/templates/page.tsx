@@ -9,6 +9,7 @@ import { TemplateCard } from "@/components/partner/template-card";
 import { PersonalizationModal } from "@/components/partner/personalization-modal";
 import { UserSwitcher } from "@/components/partner/user-switcher";
 import { getClientSession } from "@/lib/utils/cookies";
+import { getMockVideos, simulateDelay } from "@/lib/kpoint/mock-data";
 
 // Extract partner from email (e.g., hdfcuser1@kpoint.com -> hdfc)
 function getPartnerTag(email?: string): string | null {
@@ -75,36 +76,48 @@ export default function PartnerTemplatesPage() {
     setLoading(true);
     setError(null);
     try {
-      let videoList: Video[] = [];
+      // Use mock data for now
+      console.log("📦 Using mock videos from mock-data.ts");
+      await simulateDelay(500);
+      const mockVideos = getMockVideos();
 
+      // Convert mock videos to Video format
+      let videoList: Video[] = mockVideos.map((mockVideo: any) => {
+        // Parse interactivity_packages from properties (it's stored as JSON string)
+        let packages: any[] = [];
+        try {
+          const packagesJson = mockVideo.properties?.interactivity_packages;
+          if (packagesJson) {
+            packages = JSON.parse(packagesJson);
+          }
+        } catch (err) {
+          console.error(`Failed to parse interactivity_packages for video ${mockVideo.id}:`, err);
+        }
+
+        return {
+          id: mockVideo.id,
+          title: mockVideo.displayname || mockVideo.name,
+          description: mockVideo.description,
+          thumbnail_url: mockVideo.images.thumb,
+          interactivity_packages: packages,
+        };
+      });
+
+      // Filter by partner tag if set
       if (partnerTag) {
-        // Fetch partner-specific videos from KPOINT API
-        const apiUrl = `https://ktpl.kpoint.com/api/v3/search?facet.tag=${partnerTag}`;
-        console.log("🔍 Fetching partner templates from:", apiUrl);
-
-        const res = await fetch(apiUrl);
-        if (!res.ok) throw new Error("Failed to fetch partner templates");
-        const data = await res.json();
-
-        console.log("📦 Partner templates API response:", data);
-        videoList = data.results || [];
+        console.log(`🔍 Filtering videos by tag: ${partnerTag}`);
+        videoList = videoList.filter((video: any) =>
+          mockVideos.find((mv: any) => mv.id === video.id)?.tags?.includes(partnerTag)
+        );
         console.log(`✅ Found ${videoList.length} videos for partner: ${partnerTag}`);
-      } else {
-        // Fallback to default API if no partner tag
-        console.log("📦 No partner tag, using default API");
-        const res = await fetch("/api/kpoint/videos?scope=trending");
-        if (!res.ok) throw new Error("Failed to fetch videos");
-        const data = await res.json();
-        videoList = data.videos || data.list || data.results || data.data || [];
       }
 
       // Filter to only show videos with interactive packages
-      const videosWithPackages = Array.isArray(videoList)
-        ? videoList.filter((video: Video) =>
-            video.interactivity_packages &&
-            video.interactivity_packages.length > 0
-          )
-        : [];
+      const videosWithPackages = videoList.filter(
+        (video: Video) =>
+          video.interactivity_packages &&
+          video.interactivity_packages.length > 0
+      );
 
       console.log(`📊 Videos with templates: ${videosWithPackages.length}`);
 
@@ -118,7 +131,11 @@ export default function PartnerTemplatesPage() {
           video_title: video.title,
           thumbnail_url: video.thumbnail_url,
           description: pkg.description || video.description,
-          fields: [], // TODO: Extract personalization fields from package
+          fields: [
+            { key: "customer_name", label: "Customer Name", type: "text", required: true },
+            { key: "company_name", label: "Company Name", type: "text", required: false },
+            { key: "product_name", label: "Product Name", type: "text", required: false },
+          ],
         }))
       );
 

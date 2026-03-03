@@ -375,7 +375,7 @@ export const mockVideos: any[] = [
       "thumbnailUrl": null,
       "img": "https://ktpl.kpoint.com/media/data.ap-southeast-1.kpoint/ktpl.kpoint.in/ktpl.kpoint.com/kapsule/gcc-5f2ec840-e32c-4184-bf3e-af37ca12d0d7/v5/i/16x9-thumb.jpg",
       "title": "IL Hindi",
-      "tags": [],
+      "tags": ["icici", "insurance"],
       "suggestedTags": [
         "available",
         "bilingual_communication",

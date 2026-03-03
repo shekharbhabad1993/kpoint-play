@@ -18,6 +18,7 @@ interface TemplatesModalProps {
   open: boolean;
   onClose: () => void;
   onAddTemplate: () => void;
+  onPublish?: () => void;
 }
 
 export function TemplatesModal({
@@ -25,6 +26,7 @@ export function TemplatesModal({
   open,
   onClose,
   onAddTemplate,
+  onPublish,
 }: TemplatesModalProps) {
   const [templates, setTemplates] = useState<TemplateInfo[]>([]);
   const [loading, setLoading] = useState(false);
@@ -144,15 +146,15 @@ export function TemplatesModal({
                         </div>
                       </div>
                       <div className="flex-shrink-0">
-                        <span
-                          className={`text-xs px-2 py-1 rounded-full font-medium ${
-                            template.state === "PUBLISHED"
-                              ? "bg-green-100 text-green-700"
-                              : "bg-gray-100 text-gray-700"
-                          }`}
+                        <button
+                          onClick={() => {
+                            onPublish?.();
+                            onClose();
+                          }}
+                          className="px-3 py-1.5 text-xs font-medium text-white bg-kpoint-600 hover:bg-kpoint-700 rounded-lg transition-colors"
                         >
-                          {template.state}
-                        </span>
+                          Publish
+                        </button>
                       </div>
                     </div>
                   ))}

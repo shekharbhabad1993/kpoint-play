@@ -8,7 +8,7 @@ import { ErrorState } from "@/components/shared/error-state";
 import { VideoJourneyStepper } from "@/components/admin/video-journey-stepper";
 import { TemplatesModal } from "@/components/admin/templates-modal";
 import { AddTemplateModal } from "@/components/admin/add-template-modal";
-import { ShareVideoModal } from "@/components/admin/share-video-modal";
+import { PublishVideoModal } from "@/components/admin/publish-video-modal";
 import { ArrowLeft, Share2, Palette } from "lucide-react";
 import { getMockVideos, simulateDelay } from "@/lib/kpoint/mock-data";
 import { getClientSession } from "@/lib/utils/cookies";
@@ -35,6 +35,7 @@ export default function VideoDetailsPage() {
   const [error, setError] = useState<string | null>(null);
   const [currentStep, setCurrentStep] = useState(3);
   const [userEmail, setUserEmail] = useState<string>("");
+  const [publishComplete, setPublishComplete] = useState(false);
 
   // Templates Modal
   const [templatesVideo, setTemplatesVideo] = useState<Video | null>(null);
@@ -43,7 +44,7 @@ export default function VideoDetailsPage() {
   const [addTemplateVideo, setAddTemplateVideo] = useState<Video | null>(null);
 
   // Share Video Modal
-  const [shareVideo, setShareVideo] = useState<Video | null>(null);
+  const [publishVideo, setPublishVideo] = useState<Video | null>(null);
 
   // Get user email from session
   useEffect(() => {
@@ -166,7 +167,7 @@ export default function VideoDetailsPage() {
 
   const handlePublish = () => {
     if (video) {
-      setShareVideo(video);
+      setPublishVideo(video);
     }
   };
 
@@ -200,7 +201,9 @@ export default function VideoDetailsPage() {
       >
         <button
           onClick={() => router.push("/admin/videos")}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          className={`flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors ${
+            publishComplete ? "animate-pulse-highlight border-kpoint-500 bg-kpoint-50" : ""
+          }`}
         >
           <ArrowLeft className="w-4 h-4" />
           Back to Videos
@@ -227,11 +230,11 @@ export default function VideoDetailsPage() {
             </div>
           </div>
 
-          {/* Action CTA - Smaller, Centered Below Video */}
+          {/* Action CTA - Smaller, Centered Below Video with Pulse Animation */}
           {currentStep === 3 && (
             <button
               onClick={() => setTemplatesVideo(video)}
-              className="px-6 py-2 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow"
+              className="px-6 py-2 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow animate-pulse-highlight"
             >
               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold bg-kpoint-600 text-white">
                 3
@@ -241,10 +244,10 @@ export default function VideoDetailsPage() {
             </button>
           )}
 
-          {currentStep === 4 && (
+          {currentStep === 4 && !publishComplete && (
             <button
-              onClick={() => setShareVideo(video)}
-              className="px-6 py-2 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow"
+              onClick={() => setPublishVideo(video)}
+              className="px-6 py-2 rounded-md border border-kpoint-500 bg-kpoint-50 flex items-center gap-2 transition-all hover:bg-kpoint-100 hover:shadow animate-pulse-highlight"
             >
               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 text-[10px] font-bold bg-kpoint-600 text-white">
                 4
@@ -252,6 +255,18 @@ export default function VideoDetailsPage() {
               <span className="text-xs font-medium text-gray-900">Publish to Users</span>
               <Share2 className="w-3.5 h-3.5 text-kpoint-600" />
             </button>
+          )}
+
+          {/* Journey Complete Message */}
+          {publishComplete && (
+            <div className="flex items-center gap-2 text-green-600 text-sm font-medium">
+              <div className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center">
+                <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span>Journey Complete! Click "Back to Videos" to continue.</span>
+            </div>
           )}
         </div>
       </div>
@@ -263,6 +278,12 @@ export default function VideoDetailsPage() {
         onClose={() => setTemplatesVideo(null)}
         onAddTemplate={() => {
           setAddTemplateVideo(templatesVideo);
+        }}
+        onPublish={() => {
+          // Open the publish modal (step 4)
+          if (templatesVideo) {
+            setPublishVideo(templatesVideo);
+          }
         }}
       />
 
@@ -288,20 +309,21 @@ export default function VideoDetailsPage() {
             setCurrentStep(4); // Move to publish step
           }
 
-          // Force refresh templates modal with updated data
-          if (templatesVideo) {
-            setTemplatesVideo({ ...templatesVideo, _refreshKey: Date.now() } as any);
-          }
+          // Close the templates modal automatically
+          setTemplatesVideo(null);
         }}
       />
 
-      {/* Share Video Modal */}
-      <ShareVideoModal
-        video={shareVideo}
-        open={!!shareVideo}
-        onClose={() => setShareVideo(null)}
+      {/* Publish Video Modal */}
+      <PublishVideoModal
+        video={publishVideo}
+        open={!!publishVideo}
+        onClose={() => setPublishVideo(null)}
         onSuccess={() => {
-          console.log("✅ Video shared successfully");
+          console.log("✅ Video published successfully");
+          // Mark step 4 as completed
+          setCurrentStep(5);
+          setPublishComplete(true);
         }}
       />
     </>

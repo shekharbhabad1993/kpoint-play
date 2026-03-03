@@ -11,7 +11,7 @@ interface UserGroupResult {
   email?: string;
 }
 
-interface ShareVideoModalProps {
+interface PublishVideoModalProps {
   video: {
     id: string;
     title: string;
@@ -21,17 +21,17 @@ interface ShareVideoModalProps {
   onSuccess?: () => void;
 }
 
-export function ShareVideoModal({
+export function PublishVideoModal({
   video,
   open,
   onClose,
   onSuccess,
-}: ShareVideoModalProps) {
+}: PublishVideoModalProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState<UserGroupResult[]>([]);
   const [selectedItems, setSelectedItems] = useState<UserGroupResult[]>([]);
   const [searching, setSearching] = useState(false);
-  const [sharing, setSharing] = useState(false);
+  const [publishing, setPublishing] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [sendEmail, setSendEmail] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -114,10 +114,10 @@ export function ShareVideoModal({
     setSelectedItems((prev) => prev.filter((i) => i.id !== item.id));
   }
 
-  async function handleShare() {
+  async function handlePublish() {
     if (!video || selectedItems.length === 0) return;
 
-    setSharing(true);
+    setPublishing(true);
     setError(null);
     try {
       const users = selectedItems.filter((i) => i.type === "user").map((i) => i.name);
@@ -129,7 +129,7 @@ export function ShareVideoModal({
         body: JSON.stringify({ users, groups, sendEmail }),
       });
 
-      if (!res.ok) throw new Error("Failed to share video");
+      if (!res.ok) throw new Error("Failed to publish video");
 
       setSuccess(true);
       setTimeout(() => {
@@ -137,9 +137,9 @@ export function ShareVideoModal({
         onClose();
       }, 1500);
     } catch (err: any) {
-      setError(err.message || "Failed to share video");
+      setError(err.message || "Failed to publish video");
     } finally {
-      setSharing(false);
+      setPublishing(false);
     }
   }
 
@@ -153,7 +153,7 @@ export function ShareVideoModal({
           <div>
             <h2 className="text-base font-semibold text-gray-900 flex items-center gap-2">
               <Users className="w-4 h-4 text-kpoint-600" />
-              Share Video
+              Publish Video
             </h2>
             <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{video.title}</p>
           </div>
@@ -173,7 +173,7 @@ export function ShareVideoModal({
                 <Check className="w-6 h-6 text-green-600" />
               </div>
               <p className="text-base font-medium text-gray-900">
-                Video shared successfully!
+                Video published successfully!
               </p>
             </div>
           ) : (
@@ -290,7 +290,7 @@ export function ShareVideoModal({
                   />
                   <Mail className="w-3.5 h-3.5 text-gray-600" />
                   <span className="text-xs text-gray-700">
-                    Send email notification to shared users
+                    Send email notification to published users
                   </span>
                 </label>
               </div>
@@ -312,12 +312,12 @@ export function ShareVideoModal({
               Cancel
             </button>
             <button
-              onClick={handleShare}
-              disabled={selectedItems.length === 0 || sharing}
+              onClick={handlePublish}
+              disabled={selectedItems.length === 0 || publishing}
               className="btn-primary text-xs py-1.5 px-3 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
             >
-              {sharing && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-              Share with {selectedItems.length}
+              {publishing && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
+              Publish to {selectedItems.length}
             </button>
           </div>
         )}

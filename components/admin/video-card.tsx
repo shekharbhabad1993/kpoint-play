@@ -81,12 +81,18 @@ export function VideoCard({ video, onClick }: VideoCardProps) {
             <Calendar className="w-3 h-3" />
             {formatDate(video.created_at)}
           </span>
-          {packageCount > 0 && (
-            <span className="flex items-center gap-1">
-              <Package className="w-3 h-3" />
-              {packageCount}
-            </span>
-          )}
+        </div>
+
+        {/* Template Count Badge */}
+        <div className="mb-2">
+          <div className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium ${
+            packageCount > 0
+              ? "bg-kpoint-50 text-kpoint-700 border border-kpoint-200"
+              : "bg-gray-50 text-gray-500 border border-gray-200"
+          }`}>
+            <Package className="w-3 h-3" />
+            {packageCount === 0 ? "No templates" : `${packageCount} Template${packageCount > 1 ? "s" : ""}`}
+          </div>
         </div>
 
         <div className="flex gap-2">
