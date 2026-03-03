@@ -18,11 +18,11 @@ interface TemplateCardProps {
 
 export function TemplateCard({ template, onUse }: TemplateCardProps) {
   return (
-    <div className="card hover:shadow-md transition-shadow duration-200 flex flex-col h-full">
+    <div className="card hover:shadow-md transition-shadow duration-200 flex flex-col h-full p-3">
       {/* Thumbnail */}
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 mb-3">
         {template.thumbnail_url ? (
-          <div className="relative w-full aspect-video bg-gray-100 rounded-lg overflow-hidden">
+          <div className="relative w-full h-32 bg-gray-100 rounded-lg overflow-hidden">
             <Image
               src={template.thumbnail_url}
               alt={template.package_name}
@@ -33,47 +33,45 @@ export function TemplateCard({ template, onUse }: TemplateCardProps) {
             />
           </div>
         ) : (
-          <div className="w-full aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
-            <Video className="w-12 h-12 text-gray-400" />
+          <div className="w-full h-32 bg-gray-100 rounded-lg flex items-center justify-center">
+            <Video className="w-8 h-8 text-gray-400" />
           </div>
         )}
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col pt-4">
+      <div className="flex-1 flex flex-col">
           {/* Header */}
-          <div className="flex items-start gap-3 mb-3">
-            <div className="w-10 h-10 rounded-xl bg-kpoint-50 flex items-center justify-center flex-shrink-0">
-              <FileText className="w-5 h-5 text-kpoint-600" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <h3 className="font-medium text-gray-900 text-base">
-                {template.package_name}
-              </h3>
-              {template.video_title && (
-                <p className="text-sm text-gray-500 flex items-center gap-1 mt-0.5">
-                  <Video className="w-4 h-4" />
-                  {template.video_title}
-                </p>
-              )}
-            </div>
+          <div className="mb-2">
+            <h3 className="font-medium text-gray-900 text-sm line-clamp-1">
+              {template.package_name}
+            </h3>
+            {template.video_title && (
+              <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5 line-clamp-1">
+                <Video className="w-3 h-3" />
+                {template.video_title}
+              </p>
+            )}
           </div>
 
           {/* Fields */}
           {template.fields && template.fields.length > 0 && (
-            <div className="mb-3 flex-1">
-              <p className="text-xs text-gray-400 mb-1.5">
-                Personalization fields:
+            <div className="mb-2 flex-1">
+              <p className="text-xs text-gray-400 mb-1">
+                Fields:
               </p>
-              <div className="flex flex-wrap gap-1.5">
-                {template.fields.map((field) => (
+              <div className="flex flex-wrap gap-1">
+                {template.fields.slice(0, 3).map((field) => (
                   <span
                     key={field.key}
-                    className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded-md"
+                    className="inline-block px-1.5 py-0.5 text-xs bg-gray-100 text-gray-600 rounded"
                   >
                     {field.label || field.key}
                   </span>
                 ))}
+                {template.fields.length > 3 && (
+                  <span className="text-xs text-gray-400">+{template.fields.length - 3}</span>
+                )}
               </div>
             </div>
           )}
@@ -81,10 +79,10 @@ export function TemplateCard({ template, onUse }: TemplateCardProps) {
           {/* Action Button */}
           <button
             onClick={onUse}
-            className="btn-primary w-full text-sm flex items-center justify-center gap-2 mt-auto"
+            className="btn-primary w-full text-xs py-2 flex items-center justify-center gap-1.5 mt-auto"
           >
-            <Wand2 className="w-4 h-4" />
-            Personalize and Share with Customer
+            <Wand2 className="w-3.5 h-3.5" />
+            Personalize & Share
           </button>
         </div>
     </div>
