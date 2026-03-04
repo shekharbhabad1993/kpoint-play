@@ -137,23 +137,25 @@ export default function PartnerTemplatesPage() {
 
       // Convert videos to template format for the UI
       const templateList = videosWithPackages.flatMap((video: Video) =>
-        (video.interactivity_packages || []).map((pkg: InteractivityPackage) => {
-          // Get actual template definition details
-          const templateDef = getTemplateDefinition(pkg.id);
-          const templateName = templateDef?.name || pkg.name || "Greetings";
-          const templateDescription = templateDef?.description || pkg.description || video.description;
+        (video.interactivity_packages || [])
+          .filter((pkg: InteractivityPackage) => pkg.id !== "52yovfxjvcdm") // Exclude non-functioning template
+          .map((pkg: InteractivityPackage) => {
+            // Get actual template definition details
+            const templateDef = getTemplateDefinition(pkg.id);
+            const templateName = templateDef?.name || pkg.name || "Greetings";
+            const templateDescription = templateDef?.description || pkg.description || video.description;
 
-          return {
-            id: `${video.id}-${pkg.id}`,
-            package_id: pkg.id,
-            package_name: templateName,
-            video_id: video.id,
-            video_title: video.title,
-            thumbnail_url: video.thumbnail_url,
-            description: templateDescription,
-            // Fields will come from the actual template data via API
-          };
-        })
+            return {
+              id: `${video.id}-${pkg.id}`,
+              package_id: pkg.id,
+              package_name: templateName,
+              video_id: video.id,
+              video_title: video.title,
+              thumbnail_url: video.thumbnail_url,
+              description: templateDescription,
+              // Fields will come from the actual template data via API
+            };
+          })
       );
 
       setTemplates(templateList);
